@@ -5,7 +5,7 @@ import { Link } from '@inertiajs/vue3';
 <template>
   <nav class="navbar">
     <!-- Left Border Decoration -->
-    <div class="navbar-border-left"></div>
+    <div class="navbar-border-1"></div>
     
     <div class="navbar-container">
       <!-- Logo -->
@@ -28,6 +28,7 @@ import { Link } from '@inertiajs/vue3';
     
     <!-- Right Border Decoration -->
     <div class="navbar-border-right"></div>
+    <div class="navbar-border-1"></div>
   </nav>
 </template>
 
@@ -58,23 +59,29 @@ import { Link } from '@inertiajs/vue3';
   justify-content: space-between;
   gap: var(--space-8);
   padding: 0 1%;
-  width:98%
+  width:98%;
+  background: #ffffff1a;;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8.3px);
+    -webkit-backdrop-filter: blur(8.3px);
+    height:100%;
+    border-radius: 4%;
 }
 
-.glass{
+/* .glass{
     background: #ffffff1a;;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8.3px);
     -webkit-backdrop-filter: blur(8.3px);
     height:100%;
-}
+} */
 
 .shadow {
     text-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.25);
 }
 
-.navbar-border-left {
-  width: 8px;
+.navbar-border-1 {
+  width: 0.70%;
   height: 90%;
   align-self: center;
   justify-self: center;
@@ -83,6 +90,8 @@ import { Link } from '@inertiajs/vue3';
     backdrop-filter: blur(8.3px);
     -webkit-backdrop-filter: blur(8.3px);
   padding: 0;
+  border-radius: 0.5%;
 }
+
 
 </style>

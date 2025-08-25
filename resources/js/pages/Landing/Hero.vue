@@ -38,11 +38,11 @@
                 <div class="build-section">
                     <div class="build-container">
                         <h3 style="text-align: right;">Are you ready to</h3>
-                        <h2 style="text-align: right; font-size:48px">BUILD</h2>
+                        <h2 style="text-align: right; font-size:48px"><img src="/Assets/Icons/Books.svg" style="height:40px; margin-right:8px"></img>BUILD</h2>
                         <h4 style="text-align: right;">your ideas? /~</h4>
                     </div>
                     <div class="featured-container two">
-                        <img src="/Assets/Icons/Book.svg"></img>
+                        <img style='height:52px'src="/Assets/Icons/Quill.svg"></img>
                         <div>
                             <h3>Start Now</h3>
                             <p>Contact</p>
@@ -121,6 +121,9 @@
                 <h5>to partake in their <u>grand designs</u>.</h5>
             </div>
             <div class="hero-bottom-right">
+                <img src="/Assets/Images/BottomRight.svg"></img>
+                <h5 style="color: #CCD3D9;">Be convinced. /~</h5>
+                <div style="display: flex; gap:4px; background: #27292A; align-items: center; padding:0 2px;"><h5>.scroll-down</h5><img style="height:16px" src="/Assets/Icons/Arrow Down.svg"></img></div>
             </div>
         </div>
     </div>
@@ -206,7 +209,7 @@ background: var(--Dark-Gray-I, #27292A);
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-start;
-    gap: 8px;
+    gap: 4px;
     align-self: stretch;
     border-radius: 12px;
 background: linear-gradient(0deg, rgba(57, 60, 63, 0.26) 0%, rgba(57, 60, 63, 0.26) 100%), url('/Assets/Images/FeaturedPlaceholder.gif') lightgray 50% / cover no-repeat;
@@ -217,6 +220,7 @@ background: linear-gradient(0deg, rgba(57, 60, 63, 0.26) 0%, rgba(57, 60, 63, 0.
     flex-direction: row;
     max-width: 480px;
     width: 50%;
+    gap:4px;
     max-height: 160px;
     background: linear-gradient(0deg, rgba(57, 60, 63, 0.26) 0%, rgba(57, 60, 63, 0.26) 100%), url('/Assets/Images/Featured2Placeholder.gif') lightgray 50% / cover no-repeat;
 }
@@ -247,6 +251,15 @@ font-size: 40px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
+}
+
+.hero-bottom-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 4px;
+    height: 100%;
 }
 
 h1 {
@@ -297,7 +310,7 @@ margin: 0;
     align-items: flex-start;
     justify-content: space-between;
     width: 100%;
-    height: 160px;
+    height: 128px;
     max-width: 1440px;
 }
 
@@ -305,7 +318,7 @@ margin: 0;
     width: 100%;
     overflow: hidden;
     white-space: nowrap;
-    margin: 16px 0;
+    margin: 4px 0;
     height: 60px;
     display: flex;
     align-items: center;
