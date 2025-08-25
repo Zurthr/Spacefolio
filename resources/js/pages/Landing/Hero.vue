@@ -56,43 +56,65 @@
                 <h3>Trusted by Industry Professionals</h3>
                 <div class="marquee-container">
                     <div class="marquee-content">
-                        <!-- First rotation -->
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/MarqueeIcon1.svg" alt="Company 1">
+                            <img src="/Assets/Icons/Marquee/IISMA.svg" alt="IISMA">
                         </div>
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/MarqueeIcon2.svg" alt="Company 2">
+                            <img src="/Assets/Icons/Marquee/IISMASG.svg" alt="IISMA SG">
                         </div>
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/MarqueeIcon3.svg" alt="Company 3">
+                            <img src="/Assets/Icons/Marquee/Archipel.svg" alt="Archipel">
                         </div>
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/MarqueeIcon4.svg" alt="Company 4">
+                            <img src="/Assets/Icons/Marquee/Bi.svg" alt="Bi">
                         </div>
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/MarqueeIcon5.svg" alt="Company 5">
+                            <img src="/Assets/Icons/Marquee/Cybersec.svg" alt="Cybersec">
                         </div>
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/MarqueeIcon6.svg" alt="Company 6">
-                        </div>
-                        <!-- Second rotation (duplicate for seamless loop) -->
-                        <div class="marquee-item">
-                            <img src="/Assets/Icons/MarqueeIcon1.svg" alt="Company 1">
+                            <img src="/Assets/Icons/Marquee/AIESECNTU.svg" alt="AIESEC NTU">
                         </div>
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/MarqueeIcon2.svg" alt="Company 2">
+                            <img src="/Assets/Icons/Marquee/AIESECBdg.svg" alt="AIESEC Bandung">
                         </div>
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/MarqueeIcon3.svg" alt="Company 3">
+                            <img src="/Assets/Icons/Marquee/EDM.svg" alt="EDM">
                         </div>
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/MarqueeIcon4.svg" alt="Company 4">
+                            <img src="/Assets/Icons/Marquee/DASPRO.svg" alt="DASPRO">
                         </div>
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/MarqueeIcon5.svg" alt="Company 5">
+                            <img src="/Assets/Icons/Marquee/SES.svg" alt="SES">
                         </div>
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/MarqueeIcon6.svg" alt="Company 6">
+                            <img src="/Assets/Icons/Marquee/IISMA.svg" alt="IISMA">
+                        </div>
+                        <div class="marquee-item">
+                            <img src="/Assets/Icons/Marquee/IISMASG.svg" alt="IISMA SG">
+                        </div>
+                        <div class="marquee-item">
+                            <img src="/Assets/Icons/Marquee/Archipel.svg" alt="Archipel">
+                        </div>
+                        <div class="marquee-item">
+                            <img src="/Assets/Icons/Marquee/BiBlue.svg" alt="BiBlue">
+                        </div>
+                        <div class="marquee-item">
+                            <img src="/Assets/Icons/Marquee/Cybersec.svg" alt="Cybersec">
+                        </div>
+                        <div class="marquee-item">
+                            <img src="/Assets/Icons/Marquee/AIESECNTU.svg" alt="AIESEC NTU">
+                        </div>
+                        <div class="marquee-item">
+                            <img src="/Assets/Icons/Marquee/AIESECBdg.svg" alt="AIESEC Bandung">
+                        </div>
+                        <div class="marquee-item">
+                            <img src="/Assets/Icons/Marquee/EDM.svg" alt="EDM">
+                        </div>
+                        <div class="marquee-item">
+                            <img src="/Assets/Icons/Marquee/DASPRO.svg" alt="DASPRO">
+                        </div>
+                        <div class="marquee-item">
+                            <img src="/Assets/Icons/Marquee/SES.svg" alt="SES">
                         </div>
                     </div>
                 </div>
@@ -118,19 +140,21 @@ import { Head, Link } from '@inertiajs/vue3';
     background: linear-gradient(180deg, rgba(7, 14, 43, 0.20) 0%, rgba(57, 60, 63, 0.20) 85.52%, #393C3F 100%), linear-gradient(rgba(57, 60, 63, 0.8), rgba(57, 60, 63, 0.8)), url('/Assets/Images/Planetary.gif') center/cover no-repeat;
     position: relative;
     display: flex;
-    align-items: flex-start;
-    justify-content: center;
+    align-items: center;
+    gap:40px;
+    justify-content: flex-start;
     flex-direction: column;
 }
 
 .hero-content {
-    padding-top: 100px;
+    padding-top: 88px;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     width: 100%;
-    gap:20px;
+    max-height: 640px;
     max-width: 1440px;
+    gap: 64px;
 }
 
 .hero-left {
@@ -140,7 +164,14 @@ import { Head, Link } from '@inertiajs/vue3';
     flex-direction: column;
     gap:auto;
     justify-content: space-between;
-    height: 600px;
+    height: 540px;
+}
+
+.hero-bottom-left {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
 .socials{
@@ -165,12 +196,12 @@ background: var(--Dark-Gray-I, #27292A);
     flex-direction: column;
     align-items: center;
     gap: 12px;
-    max-width: 760px;
+    max-width: 640px;
 }
 
 .featured-container {
     display: flex;
-    height: 380px;
+    height: 320px;
     padding: 16px;
     flex-direction: column;
     justify-content: flex-end;
@@ -186,7 +217,7 @@ background: linear-gradient(0deg, rgba(57, 60, 63, 0.26) 0%, rgba(57, 60, 63, 0.
     flex-direction: row;
     max-width: 480px;
     width: 50%;
-    max-height: 180px;
+    max-height: 160px;
     background: linear-gradient(0deg, rgba(57, 60, 63, 0.26) 0%, rgba(57, 60, 63, 0.26) 100%), url('/Assets/Images/Featured2Placeholder.gif') lightgray 50% / cover no-repeat;
 }
 
@@ -267,6 +298,7 @@ margin: 0;
     justify-content: space-between;
     width: 100%;
     height: 160px;
+    max-width: 1440px;
 }
 
 .marquee-container {
@@ -281,23 +313,23 @@ margin: 0;
 
 .marquee-content {
     display: flex;
-    animation: marquee 20s linear infinite;
-    gap: 40px;
+    animation: marquee 15s linear infinite;
+    gap: 24px;
 }
 
 .marquee-item {
     flex-shrink: 0;
-    height: 40px;
+    height: 56px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .marquee-item img {
-    height: 40px;
+    height: 56px;
     width: auto;
     object-fit: contain;
-    filter: grayscale(100%) opacity(0.7);
+    filter: grayscale(100%) opacity(1);
     transition: filter 0.3s ease;
 }
 
@@ -306,10 +338,11 @@ margin: 0;
 }
 @keyframes marquee {
     0% {
-        transform: translateX(0%);
+        transform: translateX(0);
     }
     100% {
-        transform: translateX(-50%);
+        transform: translateX(calc(2*(-56px * 10 - 24px * 9 + 8px)));
     }
 }
+
 </style>
