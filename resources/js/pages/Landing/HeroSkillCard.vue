@@ -21,8 +21,33 @@
     <HeroCard 
         :isMainSkill="true"
         imageIcon="/Assets/Icons/SkillData.svg"
-        name="UI Design"
-        color="var(--color-orange-ii)"
+        name="Data Eng."
+        color="var(--color-red-ii)"
+        />
+    <!-- Non main skillss gais -->
+    <HeroCard 
+        imageIcon="/Assets/Icons/Laravel.svg"
+        name="Laravel"
+        />
+    <HeroCard 
+        imageIcon="/Assets/Icons/Nuxt.svg"
+        name="Nuxt"
+        />
+    <HeroCard 
+        imageIcon="/Assets/Icons/Vue.svg"
+        name="Vue"
+        />
+    <HeroCard 
+        imageIcon="/Assets/Icons/React.svg"
+        name="React"
+        />
+    <HeroCard 
+        imageIcon="/Assets/Icons/Framer.svg"
+        name="Framer"
+        />
+    <HeroCard 
+        imageIcon="/Assets/Icons/Tableau.svg"
+        name="Tableau"
         />
 </div>
 </template>
@@ -32,5 +57,12 @@ import HeroCard from './HeroCard.vue';
 </script>
 
 <style scoped>
-
+.skill-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    align-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    }
 </style>

@@ -75,12 +75,12 @@ defineProps<Props>();
   font-family: 'VCR OSD Mono', sans-serif;
   margin: 0;
   text-align: left;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 400;
 }
 
 .hero-card__name--main {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 400;
 }
 

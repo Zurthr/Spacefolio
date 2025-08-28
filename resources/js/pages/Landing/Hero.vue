@@ -4,14 +4,20 @@
             <!-- Left Section -->
             <div class="hero-left">
                 <div class="intro-text">
-                    <h2>Hey, I'm <span class="name">Zur!</span></h2>
-                    <h3>
-                        I build wonders in Minecraft,<br>
-                        though my main craft lies in
-                    </h3>
-                    <h1>REAL LIFE<br>SOLUTIONS</h1>
+                    <div>
+                        <h2>Hey, I'm <span class="name">Zur!</span></h2>
+                        <h3>
+                            I build wonders in Minecraft,<br>
+                            though my main craft lies in
+                        </h3>
+                        <h1>REAL LIFE<br>SOLUTIONS</h1>
+                    </div>
+                        <div class="intro-text"> 
+                        <h3><span style="color: var(--color-light-gray-ii);">Based in</span> Jakarta, Indonesia</h3>
+                    </div>
                     <HeroSkillCard />
                 </div>
+            
                 
                 <!-- Social Icons -->
                 <div class="social-links">
@@ -155,9 +161,11 @@ import { Head, Link } from '@inertiajs/vue3';
     justify-content: space-between;
     align-items: flex-start;
     width: 100%;
-    max-height: 640px;
+    height: 95%;
+    max-height: 800px;
     max-width: 1440px;
     gap: 64px;
+    margin-bottom: 12px
 }
 
 .hero-left {
@@ -167,7 +175,8 @@ import { Head, Link } from '@inertiajs/vue3';
     flex-direction: column;
     gap:auto;
     justify-content: space-between;
-    height: 540px;
+    height: 100%;
+    max-height: 720px;
 }
 
 .hero-bottom-left {
@@ -191,6 +200,16 @@ background: var(--Dark-Gray-I, #27292A);
     display: flex;
     gap: 8px;
     margin-top: 12px;
+}
+
+.social-links {
+    transition: opacity 0.3s ease;
+}
+
+@media (max-height: 900px) {
+    .social-links {
+        opacity: 0;
+    }
 }
 
 .hero-right {
@@ -359,12 +378,9 @@ margin: 0;
     }
 }
 
-.skill-container {
+.intro-text {
     display: flex;
-width: 442px;
-align-items: center;
-align-content: center;
-gap: 10px;
-flex-wrap: wrap;
+    flex-direction: column;
+    gap: 16px;
 }
 </style>
