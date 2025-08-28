@@ -10,7 +10,7 @@
                         though my main craft lies in
                     </h3>
                     <h1>REAL LIFE<br>SOLUTIONS</h1>
-                    <h4>'Inciting genius in the craft,<br>my craft.'</h4>
+                    <HeroSkillCard />
                 </div>
                 
                 <!-- Social Icons -->
@@ -130,6 +130,7 @@
 </template>
 
 <script setup>
+import HeroSkillCard from './HeroSkillCard.vue';
 import { Head, Link } from '@inertiajs/vue3';
 </script>
 
@@ -137,20 +138,19 @@ import { Head, Link } from '@inertiajs/vue3';
 .hero {
     padding:0 92px;
     width: 100vw;
-    height: 85vh;
+    height: 90vh;
     max-height: 1280px;
     flex-shrink: 0;
     background: linear-gradient(180deg, rgba(7, 14, 43, 0.20) 0%, rgba(57, 60, 63, 0.20) 85.52%, #393C3F 100%), linear-gradient(rgba(57, 60, 63, 0.8), rgba(57, 60, 63, 0.8)), url('/Assets/Images/Planetary.gif') center/cover no-repeat;
     position: relative;
     display: flex;
     align-items: center;
-    gap:40px;
-    justify-content: flex-start;
+    justify-content: space-between;
     flex-direction: column;
 }
 
 .hero-content {
-    padding-top: 88px;
+    padding-top: 108px;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -203,6 +203,7 @@ background: var(--Dark-Gray-I, #27292A);
 }
 
 .featured-container {
+    margin-top: 12px;
     display: flex;
     height: 320px;
     padding: 16px;
@@ -358,4 +359,12 @@ margin: 0;
     }
 }
 
+.skill-container {
+    display: flex;
+width: 442px;
+align-items: center;
+align-content: center;
+gap: 10px;
+flex-wrap: wrap;
+}
 </style>
