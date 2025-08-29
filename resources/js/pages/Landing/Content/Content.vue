@@ -56,23 +56,20 @@ onUnmounted(() => {
             </div>
             <div class="content-items">
                 <KeyContent
-                    :isHighlight="true"
-                    img="/Assets/Images/Planetary.gif"
+                    media="/Assets/Images/Planetary.gif"
                     title="Spacefolio Portfolio"
                     description="A modern, responsive portfolio website built with Laravel, Vue.js, and TypeScript. Features smooth animations, dynamic content, and a sleek design inspired by space aesthetics."
                 >
                 </KeyContent>
 
                 <KeyContent
-                    :isProject="true"
-                    img="/Assets/Images/Content/E-Commerce.png"
+                    media="/Assets/Videos/BIMain.mp4"
                     title="E-Commerce Platform"
                     description="Full-stack e-commerce solution with user authentication, payment processing, and admin dashboard. Built with modern web technologies for optimal performance."
                 />
 
                 <KeyContent
-                    :isProject="true"
-                    img="/Assets/Images/Content/Task Management.png"
+                    media="/Assets/Images/Content/Task Management.png"
                     title="Task Management App"
                     description="Collaborative task management application with real-time updates, team collaboration features, and intuitive user interface."
                 />

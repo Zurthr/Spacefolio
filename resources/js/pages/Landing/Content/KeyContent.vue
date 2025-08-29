@@ -4,9 +4,20 @@
         class="key-content"
         :style="{ 
             transform: `scale(${transformScale})`,
-            '--bg-image': `url(${props.img})`
+            '--bg-image': isVideo ? 'none' : `url(${props.media})`
         }"
     >
+        <!-- Video background -->
+        <video 
+            v-if="isVideo"
+            class="key-content__video"
+            :src="props.media"
+            autoplay
+            loop
+            muted
+            playsinline
+        ></video>
+        
         <div class="key-content__header">
             <h3 class="key-content__title">{{ title }}</h3>
         </div>
@@ -16,16 +27,22 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, computed } from 'vue';
 
 interface Props {
     title: string;
     description: string;
-    img: string;
+    media: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
-    img: '',
+    media: '',
+});
+
+// Check if the media is a video file
+const isVideo = computed(() => {
+    const videoExtensions = ['.mp4', '.webm', '.ogg', '.mov', '.avi', '.mkv'];
+    return videoExtensions.some(ext => props.media.toLowerCase().endsWith(ext));
 });
 
 const keyContentRef = ref<HTMLElement | null>(null);
@@ -89,10 +106,26 @@ onUnmounted(() => {
     width: 96%;
     transform-origin: center;
     justify-content: flex-end;
+    min-height:600px;
+    max-height: 800px;
+    position: relative;
+    overflow: hidden;
+}
+
+.key-content__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 12px;
+    z-index: -1;
 }
 
 .key-content:hover {
-    background: rgba(57, 60, 63, 0.4);
+    background-color: rgba(57, 60, 63, 0.4);
     border-color: rgba(255, 255, 255, 0.1);
 }
 
