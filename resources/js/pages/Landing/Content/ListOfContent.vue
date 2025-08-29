@@ -3,49 +3,48 @@
         <div class="content-container">
             <h3>.zur &#123;</h3>
             <div class="content">
-                <img src="/Assets/Icons/Meteor.svg" class="icon"></img>
+                <img src="/Assets/Icons/Meteor.svg" class="icon" />
                 <span class="text">Key Creations;</span>
             </div>
             <div class="content">
-                <img src="/Assets/Icons/Book.svg" class="icon"></img>
+                <img src="/Assets/Icons/Book.svg" class="icon" />
                 <span class="text">Other Projects;</span>
             </div>
             <div class="content">
-                <img src="/Assets/Icons/Heart.svg" class="icon"></img>
+                <img src="/Assets/Icons/Heart.svg" class="icon" />
                 <span class="text">Experiences;</span>
             </div>
             <div class="content">
-                <img src="/Assets/Icons/Comment.svg" class="icon"></img>
+                <img src="/Assets/Icons/Comment.svg" class="icon" />
                 <span class="text">Contact;</span>
             </div>
             <h3>&#125;</h3>
         </div>
     </div>
-
 </template>
 
 <style scoped>
 .list-of-content {
     position: sticky;
-    top: 148px;
+    top: 76px;
     display: flex;
     height: 668px;
-    padding: 0;
+    padding: 24px 0 0 0;
     flex-direction: column;
     align-items: flex-start;
     gap: 40px;
     width: 240px;
 }
 
-.content-container{
+.content-container {
     display: flex;
-    gap:8px;
+    gap: 8px;
     flex-direction: column;
-    width:240px;
+    width: 240px;
 }
 
-.content{
-    font-family: "VCR OSD Mono";
+.content {
+    font-family: 'VCR OSD Mono';
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
@@ -56,7 +55,7 @@
     transition: all 0.3s ease;
 }
 
-.content:hover{
+.content:hover {
     color: var(--color-light-gray-ii);
 }
 

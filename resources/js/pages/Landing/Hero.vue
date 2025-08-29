@@ -1,5 +1,5 @@
 <template>
-    <div class="hero"> 
+    <div class="hero">
         <div class="hero-content">
             <!-- Left Section -->
             <div class="hero-left">
@@ -7,48 +7,48 @@
                     <div>
                         <h2>Hey, I'm <span class="name">Zur!</span></h2>
                         <h3>
-                            I build wonders in Minecraft,<br>
+                            I build wonders in Minecraft,<br />
                             though my main craft lies in
                         </h3>
-                        <h1>REAL LIFE<br>SOLUTIONS</h1>
+                        <h1>REAL LIFE<br />SOLUTIONS</h1>
                     </div>
-                        <div class="intro-text"> 
-                        <h3><span style="color: var(--color-light-gray-ii);">Based in</span> Jakarta, Indonesia</h3>
+                    <div class="intro-text">
+                        <h3><span style="color: var(--color-light-gray-ii)">Based in</span> Jakarta, Indonesia</h3>
                     </div>
                     <HeroSkillCard />
                 </div>
-            
-                
+
                 <!-- Social Icons -->
                 <div class="social-links">
                     <div class="socials"><h4>.socials</h4></div>
                     <div class="social-icons">
-                        <a href="#"><img src="/Assets/Icons/Linkedin.svg"></img></a>
-                        <a href="#"><img src="/Assets/Icons/Github.svg"></img></a>
-                        <a href="#"><img src="/Assets/Icons/Instagram.svg"></img></a>
-                        <a href="#"><img src="/Assets/Icons/Bluesky.svg"></img></a>
+                        <a href="#"><img src="/Assets/Icons/Linkedin.svg" /></a>
+                        <a href="#"><img src="/Assets/Icons/Github.svg" /></a>
+                        <a href="#"><img src="/Assets/Icons/Instagram.svg" /></a>
+                        <a href="#"><img src="/Assets/Icons/Bluesky.svg" /></a>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Right Section -->
             <div class="hero-right">
                 <div class="featured-container">
-                    <img src="/Assets/Icons/Book.svg"></img>
+                    <img src="/Assets/Icons/Book.svg" />
                     <h3>Create Things</h3>
                     <p>What I've built</p>
                 </div>
-                
-                
+
                 <!-- Build Section -->
                 <div class="build-section">
                     <div class="build-container">
-                        <h3 style="text-align: right;">Are you ready to</h3>
-                        <h2 style="text-align: right; font-size:48px"><img src="/Assets/Icons/Books.svg" style="height:40px; margin-right:8px"></img>BUILD</h2>
-                        <h4 style="text-align: right;">your ideas? /~</h4>
+                        <h3 style="text-align: right">Are you ready to</h3>
+                        <h2 style="text-align: right; font-size: 48px">
+                            <img src="/Assets/Icons/Books.svg" style="height: 40px; margin-right: 8px" />BUILD
+                        </h2>
+                        <h4 style="text-align: right">your ideas? /~</h4>
                     </div>
                     <div class="featured-container two">
-                        <img style='height:52px'src="/Assets/Icons/Quill.svg"></img>
+                        <img style="height: 52px" src="/Assets/Icons/Quill.svg" />
                         <div>
                             <h3>Start Now</h3>
                             <p>Contact</p>
@@ -63,73 +63,76 @@
                 <div class="marquee-container">
                     <div class="marquee-content">
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/Marquee/IISMA.svg" alt="IISMA">
+                            <img src="/Assets/Icons/Marquee/IISMA.svg" alt="IISMA" />
                         </div>
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/Marquee/IISMASG.svg" alt="IISMA SG">
+                            <img src="/Assets/Icons/Marquee/IISMASG.svg" alt="IISMA SG" />
                         </div>
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/Marquee/Archipel.svg" alt="Archipel">
+                            <img src="/Assets/Icons/Marquee/Archipel.svg" alt="Archipel" />
                         </div>
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/Marquee/Bi.svg" alt="Bi">
+                            <img src="/Assets/Icons/Marquee/Bi.svg" alt="Bi" />
                         </div>
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/Marquee/Cybersec.svg" alt="Cybersec">
+                            <img src="/Assets/Icons/Marquee/Cybersec.svg" alt="Cybersec" />
                         </div>
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/Marquee/AIESECNTU.svg" alt="AIESEC NTU">
+                            <img src="/Assets/Icons/Marquee/AIESECNTU.svg" alt="AIESEC NTU" />
                         </div>
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/Marquee/AIESECBdg.svg" alt="AIESEC Bandung">
+                            <img src="/Assets/Icons/Marquee/AIESECBdg.svg" alt="AIESEC Bandung" />
                         </div>
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/Marquee/EDM.svg" alt="EDM">
+                            <img src="/Assets/Icons/Marquee/EDM.svg" alt="EDM" />
                         </div>
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/Marquee/DASPRO.svg" alt="DASPRO">
+                            <img src="/Assets/Icons/Marquee/DASPRO.svg" alt="DASPRO" />
                         </div>
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/Marquee/SES.svg" alt="SES">
+                            <img src="/Assets/Icons/Marquee/SES.svg" alt="SES" />
                         </div>
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/Marquee/IISMA.svg" alt="IISMA">
+                            <img src="/Assets/Icons/Marquee/IISMA.svg" alt="IISMA" />
                         </div>
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/Marquee/IISMASG.svg" alt="IISMA SG">
+                            <img src="/Assets/Icons/Marquee/IISMASG.svg" alt="IISMA SG" />
                         </div>
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/Marquee/Archipel.svg" alt="Archipel">
+                            <img src="/Assets/Icons/Marquee/Archipel.svg" alt="Archipel" />
                         </div>
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/Marquee/Bi.svg" alt="BiBlue">
+                            <img src="/Assets/Icons/Marquee/Bi.svg" alt="BiBlue" />
                         </div>
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/Marquee/Cybersec.svg" alt="Cybersec">
+                            <img src="/Assets/Icons/Marquee/Cybersec.svg" alt="Cybersec" />
                         </div>
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/Marquee/AIESECNTU.svg" alt="AIESEC NTU">
+                            <img src="/Assets/Icons/Marquee/AIESECNTU.svg" alt="AIESEC NTU" />
                         </div>
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/Marquee/AIESECBdg.svg" alt="AIESEC Bandung">
+                            <img src="/Assets/Icons/Marquee/AIESECBdg.svg" alt="AIESEC Bandung" />
                         </div>
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/Marquee/EDM.svg" alt="EDM">
+                            <img src="/Assets/Icons/Marquee/EDM.svg" alt="EDM" />
                         </div>
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/Marquee/DASPRO.svg" alt="DASPRO">
+                            <img src="/Assets/Icons/Marquee/DASPRO.svg" alt="DASPRO" />
                         </div>
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/Marquee/SES.svg" alt="SES">
+                            <img src="/Assets/Icons/Marquee/SES.svg" alt="SES" />
                         </div>
                     </div>
                 </div>
                 <h5>to partake in their <u>grand designs</u>.</h5>
             </div>
             <div class="hero-bottom-right">
-                <img src="/Assets/Images/BottomRight.svg"></img>
-                <h5 style="color: #CCD3D9;">Be convinced. /~</h5>
-                <div style="display: flex; gap:4px; background: #27292A; align-items: center; padding:0 2px;"><h5>.scroll-down</h5><img style="height:16px" src="/Assets/Icons/Arrow Down.svg"></img></div>
+                <img src="/Assets/Images/BottomRight.svg" />
+                <h5 style="color: #ccd3d9">Be convinced. /~</h5>
+                <div style="display: flex; gap: 4px; background: #27292a; align-items: center; padding: 0 2px">
+                    <h5>.scroll-down</h5>
+                    <img style="height: 16px" src="/Assets/Icons/Arrow Down.svg" />
+                </div>
             </div>
         </div>
     </div>
@@ -137,17 +140,19 @@
 
 <script setup>
 import HeroSkillCard from './HeroSkillCard.vue';
-import { Head, Link } from '@inertiajs/vue3';
 </script>
 
 <style scoped>
 .hero {
-    padding:0 92px;
+    padding: 0 92px;
     width: 100vw;
     height: 90vh;
     max-height: 1280px;
     flex-shrink: 0;
-    background: linear-gradient(180deg, rgba(7, 14, 43, 0.20) 0%, rgba(57, 60, 63, 0.20) 85.52%, #393C3F 100%), linear-gradient(rgba(57, 60, 63, 0.8), rgba(57, 60, 63, 0.8)), url('/Assets/Images/Planetary.gif') center/cover no-repeat;
+    background:
+        linear-gradient(180deg, rgba(7, 14, 43, 0.2) 0%, rgba(57, 60, 63, 0.2) 85.52%, #393c3f 100%),
+        linear-gradient(rgba(57, 60, 63, 0.8), rgba(57, 60, 63, 0.8)),
+        url('/Assets/Images/Planetary.gif') center/cover no-repeat;
     position: relative;
     display: flex;
     align-items: center;
@@ -165,7 +170,7 @@ import { Head, Link } from '@inertiajs/vue3';
     max-height: 880px;
     max-width: 1440px;
     gap: 64px;
-    margin-bottom: 12px
+    margin-bottom: 12px;
 }
 
 .hero-left {
@@ -173,7 +178,7 @@ import { Head, Link } from '@inertiajs/vue3';
     max-width: 500px;
     display: flex;
     flex-direction: column;
-    gap:auto;
+    gap: auto;
     justify-content: space-between;
     height: 100%;
     max-height: 800px;
@@ -186,17 +191,17 @@ import { Head, Link } from '@inertiajs/vue3';
     gap: 4px;
 }
 
-.socials{
+.socials {
     display: flex;
-width: 114px;
-height: 23px;
-justify-content: center;
-align-items: center;
-gap: 10px;
-background: var(--Dark-Gray-I, #27292A);
+    width: 114px;
+    height: 23px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background: var(--Dark-Gray-I, #27292a);
 }
 
-.social-icons{
+.social-icons {
     display: flex;
     gap: 8px;
     margin-top: 12px;
@@ -232,7 +237,9 @@ background: var(--Dark-Gray-I, #27292A);
     gap: 4px;
     align-self: stretch;
     border-radius: 12px;
-background: linear-gradient(0deg, rgba(57, 60, 63, 0.26) 0%, rgba(57, 60, 63, 0.26) 100%), url('/Assets/Images/FeaturedPlaceholder.gif') lightgray 50% / cover no-repeat;
+    background:
+        linear-gradient(0deg, rgba(57, 60, 63, 0.26) 0%, rgba(57, 60, 63, 0.26) 100%),
+        url('/Assets/Images/FeaturedPlaceholder.gif') lightgray 50% / cover no-repeat;
 }
 
 .featured-container.two {
@@ -240,9 +247,11 @@ background: linear-gradient(0deg, rgba(57, 60, 63, 0.26) 0%, rgba(57, 60, 63, 0.
     flex-direction: row;
     max-width: 480px;
     width: 50%;
-    gap:4px;
+    gap: 4px;
     max-height: 160px;
-    background: linear-gradient(0deg, rgba(57, 60, 63, 0.26) 0%, rgba(57, 60, 63, 0.26) 100%), url('/Assets/Images/Featured2Placeholder.gif') lightgray 50% / cover no-repeat;
+    background:
+        linear-gradient(0deg, rgba(57, 60, 63, 0.26) 0%, rgba(57, 60, 63, 0.26) 100%),
+        url('/Assets/Images/Featured2Placeholder.gif') lightgray 50% / cover no-repeat;
 }
 
 .build-section {
@@ -265,12 +274,12 @@ background: linear-gradient(0deg, rgba(57, 60, 63, 0.26) 0%, rgba(57, 60, 63, 0.
 }
 
 .name {
-color: #90B6D0;
-font-family: "Mineglyph Faithful";
-font-size: 40px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+    color: #90b6d0;
+    font-family: 'Mineglyph Faithful';
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 .hero-bottom-right {
@@ -283,30 +292,32 @@ line-height: normal;
 }
 
 h1 {
-    color: #DAE3B1;
-font-family: "Mineglyph Faithful";
-font-size: 64px;
-font-style: normal;
-font-weight: 400;
-line-height: 80px;}
+    color: #dae3b1;
+    font-family: 'Mineglyph Faithful';
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 80px;
+}
 
-h2, h3 {
-    color:white;
+h2,
+h3 {
+    color: white;
     font-weight: 400;
 }
 
 h4 {
-    color: var(--Light-Gray-I, #989DA2);
-font-family: "VCR OSD Mono";
-font-size: 24px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+    color: var(--Light-Gray-I, #989da2);
+    font-family: 'VCR OSD Mono';
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 h5 {
-    color: var(--Light-Gray-I, #989DA2);
-    font-family: "VCR OSD Mono";
+    color: var(--Light-Gray-I, #989da2);
+    font-family: 'VCR OSD Mono';
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
@@ -315,13 +326,13 @@ h5 {
 }
 
 p {
-    color: var(--Light-Gray-I, #CECECE);
-font-family: "Inter";
-font-size: 20px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-margin: 0;
+    color: var(--Light-Gray-I, #cecece);
+    font-family: 'Inter';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
 }
 
 .hero-bottom {
@@ -374,7 +385,7 @@ margin: 0;
         transform: translateX(0);
     }
     100% {
-        transform: translateX(calc(2*(-56px * 10 - 24px * 9 + 9px)));
+        transform: translateX(calc(2 * (-56px * 10 - 24px * 9 + 9px)));
     }
 }
 
