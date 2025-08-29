@@ -102,7 +102,7 @@
                             <img src="/Assets/Icons/Marquee/Archipel.svg" alt="Archipel">
                         </div>
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/Marquee/BiBlue.svg" alt="BiBlue">
+                            <img src="/Assets/Icons/Marquee/Bi.svg" alt="BiBlue">
                         </div>
                         <div class="marquee-item">
                             <img src="/Assets/Icons/Marquee/Cybersec.svg" alt="Cybersec">
@@ -374,7 +374,7 @@ margin: 0;
         transform: translateX(0);
     }
     100% {
-        transform: translateX(calc(2*(-56px * 10 - 24px * 9 + 8px)));
+        transform: translateX(calc(2*(-56px * 10 - 24px * 9 + 9px)));
     }
 }
 
