@@ -26,7 +26,6 @@ const handleScroll = () => {
 
         paddingTop.value = 24 + 76 * progress;
     } else {
-        console.log('Element below threshold, setting padding to 24px');
         paddingTop.value = 24;
     }
 };
@@ -58,7 +57,7 @@ onUnmounted(() => {
             <div class="content-items">
                 <KeyContent
                     :isHighlight="true"
-                    img="/Assets/Images/Content/Spacefolio.png"
+                    img="/Assets/Images/Planetary.gif"
                     title="Spacefolio Portfolio"
                     description="A modern, responsive portfolio website built with Laravel, Vue.js, and TypeScript. Features smooth animations, dynamic content, and a sleek design inspired by space aesthetics."
                 >
@@ -85,6 +84,7 @@ onUnmounted(() => {
 <style scoped>
 .title-container {
     display: flex;
+    z-index: 100;
     position: sticky;
     top: 0px;
     flex-direction: row;
@@ -128,7 +128,7 @@ onUnmounted(() => {
 .content-items {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 40px;
     width: 100%;
     z-index: -1;
 }

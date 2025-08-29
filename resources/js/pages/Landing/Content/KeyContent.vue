@@ -1,17 +1,23 @@
 <template>
-    <div class="key-content">
+    <div 
+        ref="keyContentRef" 
+        class="key-content"
+        :style="{ 
+            transform: `scale(${transformScale})`,
+            '--bg-image': `url(${props.img})`
+        }"
+    >
         <div class="key-content__header">
             <h3 class="key-content__title">{{ title }}</h3>
         </div>
 
         <p class="key-content__description">{{ description }}</p>
-
-        <!-- Slot for additional content like images, buttons, etc. -->
-        <slot></slot>
     </div>
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue';
+
 interface Props {
     title: string;
     description: string;
@@ -21,20 +27,59 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
     img: '',
 });
+
+const keyContentRef = ref<HTMLElement | null>(null);
+const transformScale = ref(0.7);
+
+const updateTransform = () => {
+    if (!keyContentRef.value) return;
+
+    const rect = keyContentRef.value.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    
+    const elementCenter = rect.top;
+    const viewportPercentage = (windowHeight - elementCenter) / windowHeight;
+    
+
+    const startTransform = 0.025;
+    const endTransform = 0.4;   
+    
+    if (viewportPercentage <= startTransform) {
+        // min scale
+        transformScale.value = 0.8;
+    } else if (viewportPercentage >= endTransform) {
+        // max scale
+        transformScale.value = 1;
+    } else {
+        const progress = (viewportPercentage - startTransform) / (endTransform - startTransform);
+        transformScale.value = 0.8 + (0.2 * progress);
+    }
+};
+
+onMounted(() => {
+    updateTransform();
+    window.addEventListener('scroll', updateTransform);
+    window.addEventListener('resize', updateTransform);
+});
+
+onUnmounted(() => {
+    window.removeEventListener('scroll', updateTransform);
+    window.removeEventListener('resize', updateTransform);
+});
 </script>
 
 <style scoped>
 .key-content {
     display: flex;
     flex-direction: column;
-    background-image: url(props.img);
+    background-image: var(--bg-image);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     gap: 12px;
     padding: 24px;
     border-radius: 12px;
-    background: var(--color-dark-gray-i, #27292a);
+    background-color: var(--color-dark-gray-i, #27292a);
     transition: all 0.3s ease;
     cursor: pointer;
     border: 2px solid transparent;
@@ -42,10 +87,11 @@ const props = withDefaults(defineProps<Props>(), {
     justify-self: center;
     align-self: center;
     width: 96%;
+    transform-origin: center;
+    justify-content: flex-end;
 }
 
 .key-content:hover {
-    transform: translateY(-4px);
     background: rgba(57, 60, 63, 0.4);
     border-color: rgba(255, 255, 255, 0.1);
 }
