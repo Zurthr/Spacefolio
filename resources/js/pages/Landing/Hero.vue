@@ -36,7 +36,7 @@
                 <div class="featured-container">
                     <img src="/Assets/Icons/Book.svg"></img>
                     <h3>Create Things</h3>
-                    <p>with Zur</p>
+                    <p>What I've built</p>
                 </div>
                 
                 
@@ -162,7 +162,7 @@ import { Head, Link } from '@inertiajs/vue3';
     align-items: flex-start;
     width: 100%;
     height: 95%;
-    max-height: 800px;
+    max-height: 880px;
     max-width: 1440px;
     gap: 64px;
     margin-bottom: 12px
@@ -176,7 +176,7 @@ import { Head, Link } from '@inertiajs/vue3';
     gap:auto;
     justify-content: space-between;
     height: 100%;
-    max-height: 720px;
+    max-height: 800px;
 }
 
 .hero-bottom-left {
