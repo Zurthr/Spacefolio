@@ -7,7 +7,6 @@
             '--bg-image': isVideo ? 'none' : `url(${props.media})`
         }"
     >
-        <!-- Video background -->
         <video 
             v-if="isVideo"
             class="key-content__video"
@@ -99,7 +98,6 @@ onUnmounted(() => {
     background-color: var(--color-dark-gray-i, #27292a);
     transition: all 0.3s ease;
     cursor: pointer;
-    border: 2px solid transparent;
     height: 60vh;
     justify-self: center;
     align-self: center;
@@ -112,6 +110,34 @@ onUnmounted(() => {
     overflow: hidden;
 }
 
+.key-content:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, 
+        rgba(57, 60, 63, 0.3) 0%, 
+ 
+        rgba(57, 60, 63, 0.4) 100%
+    );
+    border-radius: 12px;
+    opacity: 1;
+    transition: all 1s ease;
+    z-index: 1;
+}
+
+.key-content:hover:after {
+    background: linear-gradient(to bottom, 
+        rgba(57, 60, 63, 0) 0%, 
+        rgba(57, 60, 63, 0) 60%,
+        rgba(57, 60, 63, 0.3) 80%,  
+        rgba(57, 60, 63, 0.4) 100%
+    );
+    transition: all 1s ease;
+}
+
 .key-content__video {
     position: absolute;
     top: 0;
@@ -122,11 +148,6 @@ onUnmounted(() => {
     object-position: top center;
     border-radius: 12px;
     z-index: -1;
-}
-
-.key-content:hover {
-    background-color: rgba(57, 60, 63, 0.4);
-    border-color: rgba(255, 255, 255, 0.1);
 }
 
 .key-content__header {
@@ -143,38 +164,18 @@ onUnmounted(() => {
     font-weight: 400;
     margin: 0;
     flex-grow: 1;
+    z-index: 2;
 }
 
-.key-content__type {
-    color: var(--color-light-gray-i, #989da2);
-    font-family: 'VCR OSD Mono', monospace;
-    font-size: 14px;
-    font-weight: 400;
-    padding: 4px 8px;
-    background: rgba(57, 60, 63, 0.6);
-    border-radius: 4px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    flex-shrink: 0;
-}
-
-.key-content--highlight .key-content__type {
-    background: rgba(218, 227, 177, 0.2);
-    color: #dae3b1;
-}
-
-.key-content--project .key-content__type {
-    background: rgba(168, 230, 255, 0.2);
-    color: #a8e6ff;
-}
 
 .key-content__description {
-    color: var(--color-light-gray-ii, #ccd3d9);
+    color:  #e7edf1;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 1.5;
     margin: 0;
+    z-index: 2;
 }
 
 /* Responsive design */

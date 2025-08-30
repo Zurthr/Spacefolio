@@ -144,7 +144,7 @@ import HeroSkillCard from './HeroSkillCard.vue';
 
 <style scoped>
 .hero {
-    padding: 0 92px;
+    padding: 0 72px;
     width: 100vw;
     height: 90vh;
     max-height: 1280px;

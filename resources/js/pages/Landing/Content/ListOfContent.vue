@@ -33,7 +33,7 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 40px;
-    width: 240px;
+    width: 200px;
 }
 
 .content-container {

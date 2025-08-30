@@ -56,16 +56,15 @@ onUnmounted(() => {
             </div>
             <div class="content-items">
                 <KeyContent
-                    media="/Assets/Images/Planetary.gif"
-                    title="Spacefolio Portfolio"
-                    description="A modern, responsive portfolio website built with Laravel, Vue.js, and TypeScript. Features smooth animations, dynamic content, and a sleek design inspired by space aesthetics."
-                >
-                </KeyContent>
+                    media="/Assets/Videos/BIMain.mp4"
+                    title="Portal Data External Bank Indonesia"
+                    description="Short Desc"
+                />
 
                 <KeyContent
-                    media="/Assets/Videos/BIMain.mp4"
-                    title="E-Commerce Platform"
-                    description="Full-stack e-commerce solution with user authentication, payment processing, and admin dashboard. Built with modern web technologies for optimal performance."
+                    media="/Assets/Videos/ArchipelMain.mp4"
+                    title="Archipel Map"
+                    description="A modern, responsive portfolio website built with Laravel, Vue.js, and TypeScript. Features smooth animations, dynamic content, and a sleek design inspired by space aesthetics."
                 />
 
                 <KeyContent
@@ -113,11 +112,11 @@ onUnmounted(() => {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    padding: 30px 92px 30px 92px;
+    padding: 30px 72px 30px 72px;
     gap: 30px;
     flex-shrink: 0;
     width: 100vw;
-    max-width: calc(1440px + 184px);
+    max-width: calc(1440px + 144px);
     align-self: center;
     justify-self: center;
 }
