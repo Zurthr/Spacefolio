@@ -1,3 +1,8 @@
+<script setup>
+import Chat from './Chat.vue';
+</script>
+
+
 <template>
     <div class="list-of-content">
         <div class="content-container">
@@ -20,6 +25,7 @@
             </div>
             <h3>&#125;</h3>
         </div>
+        <Chat />
     </div>
 </template>
 
@@ -28,12 +34,13 @@
     position: sticky;
     top: 76px;
     display: flex;
-    height: 668px;
+    height: 800px;
     padding: 24px 0 0 0;
     flex-direction: column;
     align-items: flex-start;
     gap: 40px;
     width: 200px;
+    justify-content: space-between;
 }
 
 .content-container {

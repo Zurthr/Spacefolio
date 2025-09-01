@@ -22,6 +22,7 @@
         </div>
 
         <p class="key-content__description">{{ description }}</p>
+        <p class="button-content"><img src="/Assets/Icons/Binoculars.svg">Peer deeper..</p>
     </div>
 </template>
 
@@ -92,7 +93,7 @@ onUnmounted(() => {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    gap: 12px;
+    gap: 8px;
     padding: 24px;
     border-radius: 12px;
     background-color: var(--color-dark-gray-i, #27292a);
@@ -117,25 +118,28 @@ onUnmounted(() => {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, 
-        rgba(57, 60, 63, 0.3) 0%, 
- 
-        rgba(57, 60, 63, 0.4) 100%
-    );
+    background: linear-gradient(180deg, rgba(57, 60, 63, 0.00) 0%, #2D313601 69.21%, #1f202245 80.21%, #2D313680 100%);
     border-radius: 12px;
     opacity: 1;
-    transition: all 1s ease;
     z-index: 1;
 }
 
-.key-content:hover:after {
-    background: linear-gradient(to bottom, 
-        rgba(57, 60, 63, 0) 0%, 
-        rgba(57, 60, 63, 0) 60%,
-        rgba(57, 60, 63, 0.3) 80%,  
-        rgba(57, 60, 63, 0.4) 100%
-    );
-    transition: all 1s ease;
+.key-content:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(57, 60, 63, 0.00) 0%, #2D313601 40.21%, #1f202245 60.21%, #2D313680 100%);
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+    z-index: 1;
+}
+
+.key-content:hover:before {
+    opacity: 1;
 }
 
 .key-content__video {
@@ -154,6 +158,7 @@ onUnmounted(() => {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    width:fit-content;
     gap: 12px;
 }
 
@@ -165,6 +170,8 @@ onUnmounted(() => {
     margin: 0;
     flex-grow: 1;
     z-index: 2;
+    transition: transform 0.3s ease;
+    transform: translateY(16px);
 }
 
 
@@ -176,6 +183,35 @@ onUnmounted(() => {
     line-height: 1.5;
     margin: 0;
     z-index: 2;
+    transform: translateY(16px);
+    transition: transform 0.3s ease;
+}
+
+.button-content {
+    color: var(--color-light-gray-i);
+    z-index: 2;
+    font-family: 'VCR OSD Mono', monospace;
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0;
+    height:18px;
+    transform: translateY(16px);
+    transition: transform 0.3s ease;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.key-content:hover .button-content {
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+    opacity: 1;
+}
+
+.key-content:hover .key-content__title, .key-content:hover .key-content__description {
+    transform: translateY(0);
+    transition: transform 0.3s ease;
 }
 
 /* Responsive design */

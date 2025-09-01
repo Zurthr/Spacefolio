@@ -150,7 +150,7 @@ import HeroSkillCard from './HeroSkillCard.vue';
     max-height: 1280px;
     flex-shrink: 0;
     background:
-        linear-gradient(180deg, rgba(7, 14, 43, 0.2) 0%, rgba(57, 60, 63, 0.2) 85.52%, #393c3f 100%),
+        linear-gradient(180deg, rgba(7, 14, 43, 0.2) 0%, rgba(57, 60, 63, 0.2) 85.52%, #2D3136 100%),
         linear-gradient(rgba(57, 60, 63, 0.8), rgba(57, 60, 63, 0.8)),
         url('/Assets/Images/Planetary.gif') center/cover no-repeat;
     position: relative;

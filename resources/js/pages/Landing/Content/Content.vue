@@ -58,7 +58,7 @@ onUnmounted(() => {
                 <KeyContent
                     media="/Assets/Videos/BIMain.mp4"
                     title="Portal Data External Bank Indonesia"
-                    description="Short Desc"
+                    description="Central Bank of Indonesia's portal data site for external users to access monetary data."
                 />
 
                 <KeyContent
@@ -87,7 +87,7 @@ onUnmounted(() => {
     gap: auto;
     width: 100%;
     padding: v-bind(paddingTop + 'px') 16px 8px 16px;
-    background: linear-gradient(357deg, rgba(55, 59, 62, 0) 2.41%, #393c3f 54.12%), rgba(57, 60, 63, 0.2);
+    background: linear-gradient(357deg, rgba(55, 59, 62, 0) 2.41%, #2D3136 54.12%), rgba(57, 60, 63, 0.2);
     backdrop-filter: blur(8.3px);
     -webkit-backdrop-filter: blur(8.3px);
     margin-bottom: 24px;
@@ -118,6 +118,11 @@ onUnmounted(() => {
     width: 100vw;
     max-width: calc(1440px + 144px);
     align-self: center;
+    background-image: url('/Assets/Images/Background/BackgroundContent.png');
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     justify-self: center;
 }
 
