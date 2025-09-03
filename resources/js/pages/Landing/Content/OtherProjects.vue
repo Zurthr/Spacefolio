@@ -1,15 +1,15 @@
 <template>
     <div 
         ref="keyContentRef" 
-        class="key-content-item"
+        class="projects"
+        :class="[`projects--${props.layout}`, `projects--${props.size}`]"
         :style="{ 
-            transform: `scale(${transformScale})`,
             '--bg-image': isVideo ? 'none' : `url(${props.media})`
         }"
     >
         <video 
             v-if="isVideo"
-            class="key-content__video"
+            class="projects__video"
             :src="props.media"
             autoplay
             loop
@@ -17,11 +17,11 @@
             playsinline
         ></video>
         
-        <div class="key-content__header">
-            <h3 class="key-content__title">{{ title }}</h3>
+        <div class="projects__header">
+            <h3 class="projects__title">{{ title }}</h3>
         </div>
 
-        <p class="key-content__description">{{ description }}</p>
+        <p class="projects__description">{{ description }}</p>
         <p class="button-content"><img src="/Assets/Icons/Binoculars.svg">Peer deeper..</p>
     </div>
 </template>
@@ -33,60 +33,23 @@ interface Props {
     title: string;
     description: string;
     media: string;
+    layout?: 'left' | 'right' | 'centered';
+    size?: 'large' | 'small';
 }
 
 const props = withDefaults(defineProps<Props>(), {
     media: '',
+    layout: 'left',
+    size: 'large',
 });
-
-// Check if the media is a video file
 const isVideo = computed(() => {
     const videoExtensions = ['.mp4', '.webm', '.ogg', '.mov', '.avi', '.mkv'];
     return videoExtensions.some(ext => props.media.toLowerCase().endsWith(ext));
 });
-
-const keyContentRef = ref<HTMLElement | null>(null);
-const transformScale = ref(0.7);
-
-const updateTransform = () => {
-    if (!keyContentRef.value) return;
-
-    const rect = keyContentRef.value.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-    
-    const elementCenter = rect.top;
-    const viewportPercentage = (windowHeight - elementCenter) / windowHeight;
-    
-
-    const startTransform = 0.025;
-    const endTransform = 0.4;   
-    
-    if (viewportPercentage <= startTransform) {
-        // min scale
-        transformScale.value = 0.8;
-    } else if (viewportPercentage >= endTransform) {
-        // max scale
-        transformScale.value = 1;
-    } else {
-        const progress = (viewportPercentage - startTransform) / (endTransform - startTransform);
-        transformScale.value = 0.8 + (0.2 * progress);
-    }
-};
-
-onMounted(() => {
-    updateTransform();
-    window.addEventListener('scroll', updateTransform);
-    window.addEventListener('resize', updateTransform);
-});
-
-onUnmounted(() => {
-    window.removeEventListener('scroll', updateTransform);
-    window.removeEventListener('resize', updateTransform);
-});
 </script>
 
 <style scoped>
-.key-content-item {
+.projects {
     display: flex;
     flex-direction: column;
     background-image: var(--bg-image);
@@ -99,19 +62,16 @@ onUnmounted(() => {
     background-color: var(--color-dark-gray-i, #27292a);
     transition: all 0.3s ease;
     cursor: pointer;
-    height: 60vh;
     justify-self: center;
     align-self: center;
     width: 96%;
     transform-origin: center;
     justify-content: flex-end;
-    min-height:600px;
-    max-height: 800px;
     position: relative;
     overflow: hidden;
 }
 
-.key-content-item-item:after {
+.projects:after {
     content: '';
     position: absolute;
     top: 0;
@@ -124,7 +84,7 @@ onUnmounted(() => {
     z-index: 1;
 }
 
-.key-content-item:before {
+.projects:before {
     content: '';
     position: absolute;
     top: 0;
@@ -138,11 +98,11 @@ onUnmounted(() => {
     z-index: 1;
 }
 
-.key-content-item:hover:before {
+.projects:hover:before {
     opacity: 1;
 }
 
-.key-content__video {
+.projects__video {
     position: absolute;
     top: 0;
     left: 0;
@@ -154,7 +114,7 @@ onUnmounted(() => {
     z-index: -1;
 }
 
-.key-content__header {
+.projects__header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -162,7 +122,7 @@ onUnmounted(() => {
     gap: 12px;
 }
 
-.key-content__title {
+.projects__title {
     color: white;
     font-family: 'VCR OSD Mono', monospace;
     font-size: 24px;
@@ -175,7 +135,7 @@ onUnmounted(() => {
 }
 
 
-.key-content__description {
+.projects__description {
     color:  #e7edf1;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
@@ -203,33 +163,65 @@ onUnmounted(() => {
     gap: 4px;
 }
 
-.key-content-item:hover .button-content {
+.projects:hover .button-content {
     transform: translateY(0);
     transition: transform 0.3s ease;
     opacity: 1;
 }
 
-.key-content-item:hover .key-content__title, .key-content-item:hover .key-content__description {
+.projects:hover .projects__title, .projects:hover .projects__description {
     transform: translateY(0);
     transition: transform 0.3s ease;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-    .key-content-item {
-        padding: 16px;
-    }
-
-    .key-content__title {
-        font-size: 20px;
-    }
-
-    .key-content__type {
-        font-size: 12px;
-    }
-
-    .key-content__description {
-        font-size: 14px;
-    }
+/* Layout variants */
+.projects--right .projects__header {
+    align-items: flex-end;
+    text-align: right;
 }
+
+.projects--right .projects__description {
+    text-align: right;
+}
+
+.projects--right .button-content {
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+}
+
+.projects--centered {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.projects--centered .projects__header {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    justify-content: center;
+}
+
+.projects--centered .projects__description {
+    text-align: center;
+}
+
+.projects--centered .button-content {
+    justify-content: center;
+}
+
+.projects--large {
+    height: 100%;
+    min-height: 250px;
+    max-height: 550px;
+    width:100%;
+}
+
+.projects--small {
+    height: 100%;
+    min-height: 250px;
+    max-height: 550px;
+    width:100%;
+
+}
+
 </style>

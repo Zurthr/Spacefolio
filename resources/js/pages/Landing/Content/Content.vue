@@ -2,9 +2,38 @@
 import { onMounted, onUnmounted, ref } from 'vue';
 import KeyContent from './KeyContent.vue';
 import ListOfContent from './ListOfContent.vue';
+import OtherProjectsGrid from './OtherProjectsGrid.vue';
 
 const titleContainer = ref(null);
 const paddingTop = ref(24);
+
+const otherProjects = ref([
+    {
+        media: "/Assets/Images/Content/Task Management.png",
+        title: "Task Management App",
+        description: "Collaborative task management application with real-time updates, team collaboration features, and intuitive user interface."
+    },
+    {
+        media: "/Assets/Images/Content/Task Management.png",
+        title: "E-commerce Platform",
+        description: "Modern e-commerce solution with advanced product catalog, secure payment processing, and comprehensive admin dashboard."
+    },
+    {
+        media: "/Assets/Images/Content/Task Management.png",
+        title: "Social Media Dashboard",
+        description: "Comprehensive social media management tool with analytics, scheduling, and multi-platform integration."
+    },
+    {
+        media: "/Assets/Images/Content/Task Management.png",
+        title: "Weather App",
+        description: "Beautiful weather application with real-time data, forecasts, and location-based services."
+    },
+    {
+        media: "/Assets/Images/Content/Task Management.png",
+        title: "Portfolio Website",
+        description: "Responsive portfolio website showcasing creative work with smooth animations and modern design."
+    }
+]);
 
 const handleScroll = () => {
     if (!titleContainer.value) return;
@@ -55,23 +84,26 @@ onUnmounted(() => {
                 </div>
             </div>
             <div class="content-items">
-                <KeyContent
-                    media="/Assets/Videos/BIMain.mp4"
-                    title="Portal Data External Bank Indonesia"
-                    description="Central Bank of Indonesia's portal data site for external users to access monetary data."
-                />
+                <div class="key-content">
+                    <KeyContent
+                        media="/Assets/Videos/BIMain.mp4"
+                        title="Portal Data External Bank Indonesia"
+                        description="Central Bank of Indonesia's portal data site for external users to access monetary data."
+                    />
 
-                <KeyContent
-                    media="/Assets/Videos/ArchipelMain.mp4"
-                    title="Archipel Map"
-                    description="A modern, responsive portfolio website built with Laravel, Vue.js, and TypeScript. Features smooth animations, dynamic content, and a sleek design inspired by space aesthetics."
-                />
+                    <KeyContent
+                        media="/Assets/Videos/ArchipelMain.mp4"
+                        title="Archipel Map"
+                        description="A modern, responsive portfolio website built with Laravel, Vue.js, and TypeScript. Features smooth animations, dynamic content, and a sleek design inspired by space aesthetics."
+                    />
 
-                <KeyContent
-                    media="/Assets/Images/Content/Task Management.png"
-                    title="Task Management App"
-                    description="Collaborative task management application with real-time updates, team collaboration features, and intuitive user interface."
-                />
+                    <KeyContent
+                        media="/Assets/Images/Content/Task Management.png"
+                        title="Task Management App"
+                        description="Collaborative task management application with real-time updates, team collaboration features, and intuitive user interface."
+                    />
+                </div>
+                <OtherProjectsGrid :projects="otherProjects" />
             </div>
         </div>
     </div>
@@ -131,12 +163,19 @@ onUnmounted(() => {
     flex-direction: column;
     gap: 40px;
     width: 100%;
-    z-index: -1;
+    z-index: 1;
+}
+
+.key-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+    z-index: 1;
 }
 
 @media (max-width: 768px) {
     .content-items {
-        grid-template-columns: 1fr;
         gap: 16px;
     }
 }
