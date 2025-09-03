@@ -12,8 +12,6 @@
                 :media="project.media"
                 :title="project.title"
                 :description="project.description"
-                :layout="project.layout"
-                :size="project.size"
             />
         </div>
     </div>
@@ -38,37 +36,8 @@ const projectRows = computed(() => {
     const rows = [];
     for (let i = 0; i < props.projects.length; i += 2) {
         const rowProjects = props.projects.slice(i, i + 2);
-        const rowIndex = Math.floor(i / 2);
-        
-        // Mappers
-        const projectsWithLayout = rowProjects.map((project, projectIndex) => {
-            let layout: 'left' | 'right' | 'centered';
-            let size: 'large' | 'small';
-            
-            if (rowProjects.length === 1) {
-                layout = 'centered';
-                size = 'large';
-            } else {
-                const isEvenRow = rowIndex % 2 === 0;
-                
-                if (isEvenRow) {
-                    layout = projectIndex === 0 ? 'left' : 'right';
-                    size = projectIndex === 0 ? 'large' : 'small';
-                } else {
-                    layout = projectIndex === 0 ? 'right' : 'left';
-                    size = projectIndex === 0 ? 'small' : 'large';
-                }
-            }
-            
-            return {
-                ...project,
-                layout,
-                size
-            };
-        });
-        
         rows.push({
-            projects: projectsWithLayout,
+            projects: rowProjects,
             isSingle: rowProjects.length === 1
         });
     }
@@ -80,40 +49,48 @@ const projectRows = computed(() => {
 .other-projects {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 40px;
     width: 100%;
-    z-index: -1;
+    padding: 0 24px;
 }
 
 .projects-row {
     display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: 24px;
-    height:40vh;
-    width: 96%;
-    justify-self: center;
-    align-items: start;
-    align-self: center;
-}
-
-.projects-row:nth-child(even) {
-    grid-template-columns: 1fr 1.3fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    width: 100%;
 }
 
 .projects-row.single-project {
-    display: flex;
-    justify-content: center;
+    grid-template-columns: 1.3fr 0.7fr;
+}
+
+.projects-row.single-project :deep(.projects) {
+    grid-column: 1;
+}
+
+.other-projects :deep(.projects) {
+    width: 100%;
+    height: 400px;
 }
 
 @media (max-width: 768px) {
+    .other-projects {
+        gap: 40px;
+        padding: 0 20px;
+    }
+    
     .projects-row {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 40px;
     }
     
     .projects-row.single-project {
-        display: grid;
         grid-template-columns: 1fr;
+    }
+    
+    .projects-row.single-project :deep(.projects:last-child) {
+        display: block;
     }
 }
 </style>

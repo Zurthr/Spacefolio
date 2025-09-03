@@ -1,11 +1,8 @@
 <template>
     <div 
         ref="keyContentRef" 
-        class="projects"
-        :class="[`projects--${props.layout}`, `projects--${props.size}`]"
-        :style="{ 
-            '--bg-image': isVideo ? 'none' : `url(${props.media})`
-        }"
+        :class="['projects', { interactive: isInteractive }]"
+        :style="rootStyle"
     >
         <video 
             v-if="isVideo"
@@ -33,19 +30,70 @@ interface Props {
     title: string;
     description: string;
     media: string;
-    layout?: 'left' | 'right' | 'centered';
-    size?: 'large' | 'small';
+    index?: number;
 }
 
 const props = withDefaults(defineProps<Props>(), {
     media: '',
-    layout: 'left',
-    size: 'large',
+    index: 0,
 });
 const isVideo = computed(() => {
     const videoExtensions = ['.mp4', '.webm', '.ogg', '.mov', '.avi', '.mkv'];
     return videoExtensions.some(ext => props.media.toLowerCase().endsWith(ext));
 });
+
+// Refs and reactive state for scroll-based animation
+const keyContentRef = ref<HTMLElement | null>(null);
+const opacity = ref(0);
+let rafId: number | null = null;
+
+function clamp(value: number, min = 0, max = 1) {
+    return Math.max(min, Math.min(max, value));
+}
+
+function updateVisibility() {
+    const el = keyContentRef.value;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const topRatio = rect.top / (window.innerHeight || document.documentElement.clientHeight || 1);
+    // Map topRatio from [0.95 -> 0.8] to [0 -> 1]
+    const mapped = (0.95 - topRatio) / (0.97 - 0.75);
+    opacity.value = clamp(mapped);
+    rafId = null;
+}
+
+function scheduleUpdate() {
+    if (rafId != null) return;
+    rafId = requestAnimationFrame(updateVisibility);
+}
+
+onMounted(() => {
+    // initial
+    updateVisibility();
+    window.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', scheduleUpdate);
+});
+
+onUnmounted(() => {
+    window.removeEventListener('scroll', scheduleUpdate);
+    window.removeEventListener('resize', scheduleUpdate);
+    if (rafId != null) cancelAnimationFrame(rafId);
+});
+
+const isOdd = computed(() => ((props.index ?? 0) % 2) === 1);
+
+const translateX = computed(() => {
+    const offset = (1 - opacity.value) * 40; // px
+    return isOdd.value ? `translateX(${-offset}px)` : `translateX(${offset}px)`;
+});
+
+const rootStyle = computed(() => ({
+    '--bg-image': isVideo.value ? 'none' : `url(${props.media})`,
+    transform: translateX.value,
+    opacity: `${opacity.value}`,
+}));
+
+const isInteractive = computed(() => opacity.value >= 0.99);
 </script>
 
 <style scoped>
@@ -60,7 +108,7 @@ const isVideo = computed(() => {
     padding: 24px;
     border-radius: 12px;
     background-color: var(--color-dark-gray-i, #27292a);
-    transition: all 0.3s ease;
+    transition: all 0.3s ease, transform 0.7s ease;
     cursor: pointer;
     justify-self: center;
     align-self: center;
@@ -78,7 +126,7 @@ const isVideo = computed(() => {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg, rgba(57, 60, 63, 0.00) 0%, #2D313601 69.21%, #1f202245 80.21%, #2D313680 100%);
+    background: linear-gradient(180deg, rgba(57, 60, 63, 0.00) 0%, #2D313601 50.21%, #1f202245 60.21%, #2D313680 100%);
     border-radius: 12px;
     opacity: 1;
     z-index: 1;
@@ -98,7 +146,7 @@ const isVideo = computed(() => {
     z-index: 1;
 }
 
-.projects:hover:before {
+.projects.interactive:hover:before {
     opacity: 1;
 }
 
@@ -163,65 +211,26 @@ const isVideo = computed(() => {
     gap: 4px;
 }
 
-.projects:hover .button-content {
+.projects.interactive:hover .button-content {
     transform: translateY(0);
     transition: transform 0.3s ease;
     opacity: 1;
 }
 
-.projects:hover .projects__title, .projects:hover .projects__description {
+.projects.interactive:hover .projects__title, .projects.interactive:hover .projects__description {
     transform: translateY(0);
     transition: transform 0.3s ease;
 }
 
-/* Layout variants */
-.projects--right .projects__header {
-    align-items: flex-end;
-    text-align: right;
+.projects.interactive:nth-child(even) {
+    transition: all 1.2s ease;
 }
 
-.projects--right .projects__description {
-    text-align: right;
+.projects.interactive:nth-child(:last-child) {
+    transition: all 1.8s ease;
 }
 
-.projects--right .button-content {
-    justify-content: flex-end;
-    flex-direction: row-reverse;
-}
 
-.projects--centered {
-    max-width: 600px;
-    margin: 0 auto;
-}
 
-.projects--centered .projects__header {
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    justify-content: center;
-}
-
-.projects--centered .projects__description {
-    text-align: center;
-}
-
-.projects--centered .button-content {
-    justify-content: center;
-}
-
-.projects--large {
-    height: 100%;
-    min-height: 250px;
-    max-height: 550px;
-    width:100%;
-}
-
-.projects--small {
-    height: 100%;
-    min-height: 250px;
-    max-height: 550px;
-    width:100%;
-
-}
 
 </style>

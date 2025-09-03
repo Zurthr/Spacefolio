@@ -9,30 +9,20 @@ const paddingTop = ref(24);
 
 const otherProjects = ref([
     {
-        media: "/Assets/Images/Content/Task Management.png",
-        title: "Task Management App",
-        description: "Collaborative task management application with real-time updates, team collaboration features, and intuitive user interface."
+        media: "/Assets/Images/AcademifyMAIN.png",
+        title: "Academify",
+        description: "Educational Application for Teachers and Students to manage their learning journey."
     },
     {
         media: "/Assets/Images/Content/Task Management.png",
-        title: "E-commerce Platform",
+        title: "Singapore HDB Affordability Dashboard",
         description: "Modern e-commerce solution with advanced product catalog, secure payment processing, and comprehensive admin dashboard."
     },
     {
         media: "/Assets/Images/Content/Task Management.png",
-        title: "Social Media Dashboard",
-        description: "Comprehensive social media management tool with analytics, scheduling, and multi-platform integration."
+        title: "Cassava Leaf Disease Classification",
+        description: "Image Classification Model for Cassava Leaf Disease Detection."
     },
-    {
-        media: "/Assets/Images/Content/Task Management.png",
-        title: "Weather App",
-        description: "Beautiful weather application with real-time data, forecasts, and location-based services."
-    },
-    {
-        media: "/Assets/Images/Content/Task Management.png",
-        title: "Portfolio Website",
-        description: "Responsive portfolio website showcasing creative work with smooth animations and modern design."
-    }
 ]);
 
 const handleScroll = () => {
@@ -102,6 +92,11 @@ onUnmounted(() => {
                         title="Task Management App"
                         description="Collaborative task management application with real-time updates, team collaboration features, and intuitive user interface."
                     />
+                    <div class="key-content-footer">
+                        <h2 style="font-size: 26px;">These pride-inducing creations from over the years</h2>
+                        <p>Though there's plenty more below to see</p>
+                        <h5>introducing...</h5>
+                    </div>
                 </div>
                 <OtherProjectsGrid :projects="otherProjects" />
             </div>
@@ -172,6 +167,16 @@ onUnmounted(() => {
     gap: 40px;
     width: 100%;
     z-index: 1;
+}
+
+.key-content-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 48px;
 }
 
 @media (max-width: 768px) {

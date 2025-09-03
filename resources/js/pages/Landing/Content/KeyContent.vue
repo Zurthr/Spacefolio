@@ -6,6 +6,8 @@
             transform: `scale(${transformScale})`,
             '--bg-image': isVideo ? 'none' : `url(${props.media})`
         }"
+        @mouseenter="handleMouseEnter"
+        @mouseleave="handleMouseLeave"
     >
         <video 
             v-if="isVideo"
@@ -47,6 +49,8 @@ const isVideo = computed(() => {
 
 const keyContentRef = ref<HTMLElement | null>(null);
 const transformScale = ref(0.7);
+const isHovered = ref(false);
+const isFullScale = ref(false);
 
 const updateTransform = () => {
     if (!keyContentRef.value) return;
@@ -61,16 +65,35 @@ const updateTransform = () => {
     const startTransform = 0.025;
     const endTransform = 0.4;   
     
+    let baseScale = 0.8;
+    
     if (viewportPercentage <= startTransform) {
-        // min scale
-        transformScale.value = 0.8;
+        baseScale = 0.8;
+        isFullScale.value = false;
     } else if (viewportPercentage >= endTransform) {
-        // max scale
-        transformScale.value = 1;
+        baseScale = 1;
+        isFullScale.value = true;
     } else {
         const progress = (viewportPercentage - startTransform) / (endTransform - startTransform);
-        transformScale.value = 0.8 + (0.2 * progress);
+        baseScale = 0.8 + (0.2 * progress);
+        isFullScale.value = false;
     }
+    
+    if (isFullScale.value && isHovered.value) {
+        transformScale.value = baseScale * 1.02;
+    } else {
+        transformScale.value = baseScale;
+    }
+};
+
+const handleMouseEnter = () => {
+    isHovered.value = true;
+    updateTransform();
+};
+
+const handleMouseLeave = () => {
+    isHovered.value = false;
+    updateTransform();
 };
 
 onMounted(() => {
@@ -97,7 +120,7 @@ onUnmounted(() => {
     padding: 24px;
     border-radius: 12px;
     background-color: var(--color-dark-gray-i, #27292a);
-    transition: all 0.3s ease;
+    transition: all 0.3s ease, transform 0.3s ease;
     cursor: pointer;
     height: 60vh;
     justify-self: center;
@@ -208,6 +231,8 @@ onUnmounted(() => {
     transition: transform 0.3s ease;
     opacity: 1;
 }
+
+
 
 .key-content-item:hover .key-content__title, .key-content-item:hover .key-content__description {
     transform: translateY(0);
