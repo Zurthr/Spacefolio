@@ -1,20 +1,12 @@
-<script setup>
+<script setup lang="ts">
 import Chat from './Chat.vue';
 
-const props = defineProps({
+defineProps({
     activeSection: {
         type: String,
         default: 'key-creations'
     }
 });
-
-// Map section names
-const sectionMap = {
-    'key-creations': 0,
-    'other-projects': 1,
-    'experiences': 2,
-    'contact': 3
-};
 </script>
 
 
@@ -49,7 +41,7 @@ const sectionMap = {
     position: sticky;
     top: 76px;
     display: flex;
-    height: 800px;
+    height: calc(100vh - 116px);
     padding: 24px 0 0 0;
     flex-direction: column;
     align-items: flex-start;

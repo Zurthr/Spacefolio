@@ -1,15 +1,15 @@
-<script setup>
+<script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue';
 import KeyContent from './KeyContent.vue';
 import ListOfContent from './ListOfContent.vue';
 import OtherProjectsGrid from './OtherProjectsGrid.vue';
 
-const titleContainer = ref(null);
-const keyContentRef = ref(null);
-const otherProjectsRef = ref(null);
+const titleContainer = ref<HTMLElement | null>(null);
+const keyContentRef = ref<HTMLElement | null>(null);
+const otherProjectsRef = ref<HTMLElement | null>(null);
 const paddingTop = ref(24);
 const backgroundOpacity = ref(0);
-const activeSection = ref('key-creations');
+const activeSection = ref<'key-creations' | 'other-projects' | 'experiences' | 'contact'>('key-creations');
 
 // Section configs
 const sectionTitles = {

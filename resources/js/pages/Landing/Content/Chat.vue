@@ -23,7 +23,7 @@
             <!-- Typing indicator -->
             <div class="typing-container">
                 <div class="mail" @click="nextTestimonial">
-                <img style='height:20px; cursor: pointer;'src="/Assets/Chat/Mail.svg" alt="Mail" />
+                <img style='height:20px; cursor: pointer;' src="/Assets/Chat/Mail.svg" alt="Mail" />
             </div>
             <div class="typing-indicator" :style="{ 
                 opacity: showTyping ? 1 : 0,
@@ -185,16 +185,10 @@ p {
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 
-// Current index for the carousel
 const currentIndex = ref(0)
-
-// Typing indicator state
 const showTyping = ref(false)
 
-// Chat item visibility state
 const chatItemVisible = ref(false)
-
-// Auto-rotate interval
 let intervalId: number | null = null
 let typingTimeoutId: number | null = null
 
@@ -204,7 +198,7 @@ const testimonials = ref([
         personImage: "/Assets/Chat/Ijapi.svg",
         companyImage: "/Assets/Chat/tedxround.svg",
         personName: "Izzafi A.",
-        title: "Software Eng.",
+        title: "Data Eng.",
         company: "TedxTelkom",
         message: "..Versatile full-stack developer and adaptive leader who empowers his team and drives results. Highly self-driven.."
     },
@@ -213,7 +207,7 @@ const testimonials = ref([
         personImage: "/Assets/Chat/Zulfa.svg",
         companyImage: "/Assets/Chat/biround.png",
         personName: "Zulfa U.",
-        title: "Sr. UI Developer",
+        title: "Sr. UI/UX Dev.",
         company: "Bank Indonesia",
         message: "..Adaptable engineer, quickly learned BI’s practices, consistently shipped amazing results. Sociable and dependable.."
     },
@@ -228,25 +222,20 @@ const testimonials = ref([
     }
 ])
 
-// Computed property to get current testimonial
 const currentTestimonial = computed(() => testimonials.value[currentIndex.value])
 
-// Function to go to next testimonial
 const nextTestimonial = () => {
-    showTyping.value = false // Hide typing when switching
-    chatItemVisible.value = false // Hide current chat item
+    showTyping.value = false
+    chatItemVisible.value = false
     
-    // Wait for fade out, then change content and fade in
     setTimeout(() => {
         currentIndex.value = (currentIndex.value + 1) % testimonials.value.length
-        chatItemVisible.value = true // Show new chat item
+        chatItemVisible.value = true
         scheduleTypingIndicator()
-    }, 400) // Half of the 0.8s transition
+    }, 400)
 }
 
-// Function to show typing indicator after 4 seconds
 const scheduleTypingIndicator = () => {
-    // Clear any existing typing timeout
     if (typingTimeoutId) {
         clearTimeout(typingTimeoutId)
     }
@@ -259,20 +248,18 @@ const scheduleTypingIndicator = () => {
 
 
 
-// Start auto-rotation
 const startAutoRotate = () => {
-    intervalId = setInterval(nextTestimonial, 8000) // 8 seconds
+    intervalId = setInterval(nextTestimonial, 8000) // 8 sec
 }
 
 // Lifecycle hooks
 onMounted(() => {
-    // Show first chat item with entrance animation
     setTimeout(() => {
         chatItemVisible.value = true
-    }, 50) // Small delay to ensure DOM is ready
+    }, 50)
     
     startAutoRotate()
-    scheduleTypingIndicator() // Start typing indicator for first testimonial
+    scheduleTypingIndicator()
 })
 
 onUnmounted(() => {
