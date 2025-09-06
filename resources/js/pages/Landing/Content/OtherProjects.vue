@@ -42,7 +42,6 @@ const isVideo = computed(() => {
     return videoExtensions.some(ext => props.media.toLowerCase().endsWith(ext));
 });
 
-// Refs and reactive state for scroll-based animation
 const keyContentRef = ref<HTMLElement | null>(null);
 const opacity = ref(0);
 let rafId: number | null = null;

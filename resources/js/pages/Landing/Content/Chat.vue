@@ -89,7 +89,7 @@
 }
 
 .personel img {
-    width: 40px;
+    height: 40px;
 }
 
 .text{
@@ -99,7 +99,7 @@
     width: 200px;
     background-color: var(--color-light-gray-ii);
     border-radius: 8px;
-    height:124px;
+    height:160px;
 }
 
 .typing-container {
@@ -202,29 +202,29 @@ const testimonials = ref([
     {
         id: 1,
         personImage: "/Assets/Chat/Ijapi.svg",
-        companyImage: "/Assets/Chat/Google.svg",
-        personName: "John Doe",
+        companyImage: "/Assets/Chat/tedxround.svg",
+        personName: "Izzafi A.",
         title: "Software Eng.",
-        company: "Google",
-        message: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos."
+        company: "TedxTelkom",
+        message: "..Versatile full-stack developer and adaptive leader who empowers his team and drives results. Highly self-driven.."
     },
     {
         id: 2,
-        personImage: "/Assets/Chat/Ijapi.svg",
-        companyImage: "/Assets/Chat/Google.svg",
-        personName: "Jane Smith",
-        title: "Sr. Developer",
-        company: "Microsoft",
-        message: "Outstanding work quality and attention to detail. Highly recommended for any project!"
+        personImage: "/Assets/Chat/Zulfa.svg",
+        companyImage: "/Assets/Chat/biround.png",
+        personName: "Zulfa U.",
+        title: "Sr. UI Developer",
+        company: "Bank Indonesia",
+        message: "..Adaptable engineer, quickly learned BI’s practices, consistently shipped amazing results. Sociable and dependable.."
     },
     {
         id: 3,
-        personImage: "/Assets/Chat/Ijapi.svg",
-        companyImage: "/Assets/Chat/Google.svg",
-        personName: "Mike Johnson",
-        title: "Tech Lead",
-        company: "Amazon",
-        message: "Exceptional collaboration skills and technical expertise. A true professional."
+        personImage: "/Assets/Chat/Sheva.svg",
+        companyImage: "/Assets/Chat/tedxround.svg",
+        personName: "Sheva Z.A",
+        title: "Content Lead",
+        company: "TedxNTU",
+        message: "..Empathetic leader, very communicative and empowers teams with diverse perspectives. Collaborative and growth-oriented.."
     }
 ])
 

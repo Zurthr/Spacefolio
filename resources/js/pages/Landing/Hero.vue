@@ -18,8 +18,7 @@
                     <HeroSkillCard />
                 </div>
 
-                <!-- Social Icons -->
-                <div class="social-links">
+                <!-- <div class="social-links">
                     <div class="socials"><h4>.socials</h4></div>
                     <div class="social-icons">
                         <a href="#"><img src="/Assets/Icons/Linkedin.svg" /></a>
@@ -27,7 +26,7 @@
                         <a href="#"><img src="/Assets/Icons/Instagram.svg" /></a>
                         <a href="#"><img src="/Assets/Icons/Bluesky.svg" /></a>
                     </div>
-                </div>
+                </div> -->
             </div>
 
             <!-- Right Section -->

@@ -5,7 +5,39 @@ import ListOfContent from './ListOfContent.vue';
 import OtherProjectsGrid from './OtherProjectsGrid.vue';
 
 const titleContainer = ref(null);
+const keyContentRef = ref(null);
+const otherProjectsRef = ref(null);
 const paddingTop = ref(24);
+const backgroundOpacity = ref(0);
+const activeSection = ref('key-creations');
+
+// Section configs
+const sectionTitles = {
+    'key-creations': {
+        title: 'A highlight of my proudest',
+        subtitle: 'CREATIONS',
+        description: 'Peer into my beloved craft',
+        subdescription: 'A product of ever-burning coffee addiction and Ylang Ylang tea.'
+    },
+    'other-projects': {
+        title: 'A showcase of my other',
+        subtitle: 'PROJECTS',
+        description: 'Explore my diverse portfolio',
+        subdescription: 'From experiments to client work, each tells a story.'
+    },
+    'experiences': {
+        title: 'A journey through my',
+        subtitle: 'EXPERIENCES',
+        description: 'Professional milestones',
+        subdescription: 'Where I learned, grew, and made impact.'
+    },
+    'contact': {
+        title: 'Ready to start a',
+        subtitle: 'CONVERSATION',
+        description: 'Let\'s build something together',
+        subdescription: 'Coffee chats and collaboration await.'
+    }
+};
 
 const otherProjects = ref([
     {
@@ -33,9 +65,6 @@ const handleScroll = () => {
 
     const threshold = windowHeight * 0.096;
     const elementTop = rect.top;
-
-    console.log('Element top:', elementTop, 'Threshold (20% from top):', threshold, 'Window height:', windowHeight);
-
     if (elementTop <= threshold) {
         const maxDistance = threshold;
         const currentDistance = Math.max(0, elementTop);
@@ -47,11 +76,45 @@ const handleScroll = () => {
     } else {
         paddingTop.value = 24;
     }
+
+    const startRevealPoint = windowHeight * 0.4;
+    const fullOpacityPoint = 0;
+    
+    if (elementTop <= startRevealPoint && elementTop >= fullOpacityPoint) {
+        const distance = elementTop - fullOpacityPoint;
+        const maxDistance = startRevealPoint - fullOpacityPoint;
+        const opacity = Math.max(0, Math.min(1, 1 - (distance / maxDistance)));
+        backgroundOpacity.value = 1 - Math.pow(1 - opacity, 2);
+    } else if (elementTop < fullOpacityPoint) {
+        backgroundOpacity.value = 1;
+    } else {
+        backgroundOpacity.value = 0;
+    }
+
+    // Reuse windowHeight
+    const scrollY = window.scrollY;
+    const viewportCenter = scrollY + windowHeight / 2;
+    if (keyContentRef.value && otherProjectsRef.value) {
+        const keyContentRect = keyContentRef.value.getBoundingClientRect();
+        const keyContentTop = scrollY + keyContentRect.top;
+        const keyContentBottom = keyContentTop + keyContentRect.height;
+
+        const otherProjectsRect = otherProjectsRef.value.getBoundingClientRect();
+        const otherProjectsTop = scrollY + otherProjectsRect.top;
+        const otherProjectsBottom = otherProjectsTop + otherProjectsRect.height;
+
+        if (viewportCenter >= keyContentTop && viewportCenter < keyContentBottom) {
+            activeSection.value = 'key-creations';
+        } else if (viewportCenter >= otherProjectsTop && viewportCenter < otherProjectsBottom) {
+            activeSection.value = 'other-projects';
+        }
+        // Add rest o sections (experiences, contact)
+    }
 };
 
 onMounted(() => {
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
+    handleScroll();
 });
 
 onUnmounted(() => {
@@ -60,21 +123,23 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div class="content-section">
-        <ListOfContent />
+    <div class="content-background">
+        <div class="background-image"></div>
+        <div class="content-section">
+        <ListOfContent :activeSection="activeSection" />
         <div>
             <div class="title-container" ref="titleContainer">
                 <div class="content-title">
-                    <h2>A highlight of my proudest</h2>
-                    <h1>CREATIONS</h1>
+                    <h2>{{ sectionTitles[activeSection].title }}</h2>
+                    <h1>{{ sectionTitles[activeSection].subtitle }}</h1>
                 </div>
                 <div class="content-description">
-                    <h3>Peer into my beloved craft</h3>
-                    <h4>A product of ever-burning coffee addiction and Ylang Ylang tea.</h4>
+                    <h3>{{ sectionTitles[activeSection].description }}</h3>
+                    <h4>{{ sectionTitles[activeSection].subdescription }}</h4>
                 </div>
             </div>
             <div class="content-items">
-                <div class="key-content">
+                <div class="key-content" ref="keyContentRef">
                     <KeyContent
                         media="/Assets/Videos/BIMain.mp4"
                         title="Portal Data External Bank Indonesia"
@@ -98,8 +163,11 @@ onUnmounted(() => {
                         <h5>introducing...</h5>
                     </div>
                 </div>
-                <OtherProjectsGrid :projects="otherProjects" />
+                <div ref="otherProjectsRef">
+                    <OtherProjectsGrid :projects="otherProjects" />
+                </div>
             </div>
+        </div>
         </div>
     </div>
 </template>
@@ -145,12 +213,30 @@ onUnmounted(() => {
     width: 100vw;
     max-width: calc(1440px + 144px);
     align-self: center;
-    background-image: url('/Assets/Images/Background/BackgroundContent.png');
+    justify-self: center;
+    position: relative;
+    z-index: 1;
+}
+
+.content-background {
+    width: 100vw;
+    position: relative;
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/Assets/Images/Footer2.png');
     background-size: cover;
     background-position: bottom;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    justify-self: center;
+    opacity: v-bind(backgroundOpacity);
+    transition: opacity 0.1s ease-out;
+    z-index: 0;
 }
 
 .content-items {

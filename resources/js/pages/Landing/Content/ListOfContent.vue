@@ -1,5 +1,20 @@
 <script setup>
 import Chat from './Chat.vue';
+
+const props = defineProps({
+    activeSection: {
+        type: String,
+        default: 'key-creations'
+    }
+});
+
+// Map section names
+const sectionMap = {
+    'key-creations': 0,
+    'other-projects': 1,
+    'experiences': 2,
+    'contact': 3
+};
 </script>
 
 
@@ -7,19 +22,19 @@ import Chat from './Chat.vue';
     <div class="list-of-content">
         <div class="content-container">
             <h3>.zur &#123;</h3>
-            <div class="content">
+            <div class="content" :class="{ active: activeSection === 'key-creations' }">
                 <img src="/Assets/Icons/Meteor.svg" class="icon" />
                 <span class="text">Key Creations;</span>
             </div>
-            <div class="content">
+            <div class="content" :class="{ active: activeSection === 'other-projects' }">
                 <img src="/Assets/Icons/Book.svg" class="icon" />
                 <span class="text">Other Projects;</span>
             </div>
-            <div class="content">
+            <div class="content" :class="{ active: activeSection === 'experiences' }">
                 <img src="/Assets/Icons/Heart.svg" class="icon" />
                 <span class="text">Experiences;</span>
             </div>
-            <div class="content">
+            <div class="content" :class="{ active: activeSection === 'contact' }">
                 <img src="/Assets/Icons/Comment.svg" class="icon" />
                 <span class="text">Contact;</span>
             </div>
@@ -86,6 +101,19 @@ import Chat from './Chat.vue';
 }
 
 .content:hover .text {
+    transform: translateX(0);
+}
+
+.content.active {
+    color: white;
+}
+
+.content.active .icon {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.content.active .text {
     transform: translateX(0);
 }
 </style>
