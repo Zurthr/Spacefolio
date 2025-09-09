@@ -7,6 +7,14 @@ defineProps({
         default: 'key-creations'
     }
 });
+
+const emit = defineEmits<{
+    scrollToSection: [section: 'key-creations' | 'other-projects' | 'experiences' | 'contact']
+}>();
+
+const handleSectionClick = (section: 'key-creations' | 'other-projects' | 'experiences' | 'contact') => {
+    emit('scrollToSection', section);
+};
 </script>
 
 
@@ -14,20 +22,20 @@ defineProps({
     <div class="list-of-content">
         <div class="content-container">
             <h3>.zur &#123;</h3>
-            <div class="content" :class="{ active: activeSection === 'key-creations' }">
+            <div class="content" :class="{ active: activeSection === 'key-creations' }" @click="handleSectionClick('key-creations')">
                 <img src="/Assets/Icons/Meteor.svg" class="icon" />
                 <span class="text">Key Creations;</span>
             </div>
-            <div class="content" :class="{ active: activeSection === 'other-projects' }">
-                <img src="/Assets/Icons/Book.svg" class="icon" />
+            <div class="content" :class="{ active: activeSection === 'other-projects' }" @click="handleSectionClick('other-projects')">
+                <img src="/Assets/Icons/Files.svg" class="icon" />
                 <span class="text">Other Projects;</span>
             </div>
-            <div class="content" :class="{ active: activeSection === 'experiences' }">
-                <img src="/Assets/Icons/Heart.svg" class="icon" />
+            <div class="content" :class="{ active: activeSection === 'experiences' }" @click="handleSectionClick('experiences')">
+                <img src="/Assets/Icons/ExpBottle.svg" class="icon" />
                 <span class="text">Experiences;</span>
             </div>
-            <div class="content" :class="{ active: activeSection === 'contact' }">
-                <img src="/Assets/Icons/Comment.svg" class="icon" />
+            <div class="content" :class="{ active: activeSection === 'contact' }" @click="handleSectionClick('contact')">
+                <img src="/Assets/Icons/Dino.svg" class="icon" />
                 <span class="text">Contact;</span>
             </div>
             <h3>&#125;</h3>

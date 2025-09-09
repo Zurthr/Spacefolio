@@ -9,6 +9,7 @@ const titleContainer = ref<HTMLElement | null>(null);
 const keyContentRef = ref<HTMLElement | null>(null);
 const otherProjectsRef = ref<HTMLElement | null>(null);
 const experiencesRef = ref<HTMLElement | null>(null);
+const contactRef = ref<HTMLElement | null>(null);
 const paddingTop = ref(24); 
 const backgroundOpacity = ref(0);
 const activeSection = ref<'key-creations' | 'other-projects' | 'experiences' | 'contact'>('key-creations');
@@ -96,7 +97,7 @@ const handleScroll = () => {
     // Reuse windowHeight
     const scrollY = window.scrollY;
     const viewportCenter = scrollY + windowHeight / 2;
-    if (keyContentRef.value && otherProjectsRef.value) {
+    if (keyContentRef.value && otherProjectsRef.value && experiencesRef.value && contactRef.value) {
         const keyContentRect = keyContentRef.value.getBoundingClientRect();
         const keyContentTop = scrollY + keyContentRect.top;
         const keyContentBottom = keyContentTop + keyContentRect.height;
@@ -105,12 +106,52 @@ const handleScroll = () => {
         const otherProjectsTop = scrollY + otherProjectsRect.top;
         const otherProjectsBottom = otherProjectsTop + otherProjectsRect.height;
 
+        const experiencesRect = experiencesRef.value.getBoundingClientRect();
+        const experiencesTop = scrollY + experiencesRect.top;
+        const experiencesBottom = experiencesTop + experiencesRect.height;
+
+        const contactRect = contactRef.value.getBoundingClientRect();
+        const contactTop = scrollY + contactRect.top;
+        const contactBottom = contactTop + contactRect.height;
+
         if (viewportCenter >= keyContentTop && viewportCenter < keyContentBottom) {
             activeSection.value = 'key-creations';
         } else if (viewportCenter >= otherProjectsTop && viewportCenter < otherProjectsBottom) {
             activeSection.value = 'other-projects';
+        } else if (viewportCenter >= experiencesTop && viewportCenter < experiencesBottom) {
+            activeSection.value = 'experiences';
+        } else if (viewportCenter >= contactTop && viewportCenter < contactBottom) {
+            activeSection.value = 'contact';
         }
-        // Add rest o sections (experiences, contact)
+    }
+};
+
+const scrollToSection = (section: 'key-creations' | 'other-projects' | 'experiences' | 'contact') => {
+    let targetRef: HTMLElement | null = null;
+    
+    switch (section) {
+        case 'key-creations':
+            targetRef = keyContentRef.value;
+            break;
+        case 'other-projects':
+            targetRef = otherProjectsRef.value;
+            break;
+        case 'experiences':
+            targetRef = experiencesRef.value;
+            break;
+        case 'contact':
+            targetRef = contactRef.value;
+            break;
+    }
+    
+    if (targetRef) {
+        const rect = targetRef.getBoundingClientRect();
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const targetPosition = rect.top + scrollTop - 140;
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
     }
 };
 
@@ -128,7 +169,7 @@ onUnmounted(() => {
     <div class="content-background">
         <div class="background-image"></div>
         <div class="content-section">
-        <ListOfContent :activeSection="activeSection" />
+        <ListOfContent :activeSection="activeSection" @scrollToSection="scrollToSection" />
         <div>
             <div class="title-container" ref="titleContainer">
                 <div class="content-title">
@@ -175,6 +216,14 @@ onUnmounted(() => {
                 </div>
                 <div ref="experiencesRef">
                     <Experience />
+                    <div class="key-content-footer" style="margin-top: 48px;">
+                        <p>Embarking on new adventures..</p>
+                        <h2 style="font-size: 26px;">Next Stop: Contact</h2>
+                        <h5>Let's connect and build something amazing!</h5>
+                    </div>
+                </div>
+                <div ref="contactRef">
+                    <!-- Contact section content will go here -->
                     <div class="key-content-footer" style="margin-top: 48px;">
                         <p>Psst.. we're almost at the end..</p>
                         <h2 style="font-size: 26px;">Here's My Contact</h2>

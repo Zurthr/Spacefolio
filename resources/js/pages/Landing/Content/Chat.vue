@@ -228,10 +228,16 @@ const nextTestimonial = () => {
     showTyping.value = false
     chatItemVisible.value = false
     
+    if (intervalId) {
+        clearInterval(intervalId)
+    }
+    
     setTimeout(() => {
         currentIndex.value = (currentIndex.value + 1) % testimonials.value.length
         chatItemVisible.value = true
         scheduleTypingIndicator()
+        
+        startAutoRotate()
     }, 400)
 }
 
@@ -252,7 +258,6 @@ const startAutoRotate = () => {
     intervalId = setInterval(nextTestimonial, 8000) // 8 sec
 }
 
-// Lifecycle hooks
 onMounted(() => {
     setTimeout(() => {
         chatItemVisible.value = true
