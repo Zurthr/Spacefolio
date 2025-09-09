@@ -11,7 +11,6 @@
             class="company-group"
             ref="experienceRefs"
         >
-            <!-- Company Header -->
             <div class="company-header">
                 <h3 class="company-name">{{ company.name }}</h3>
                 <div class="company-duration">
@@ -19,7 +18,6 @@
                 </div>
             </div>
 
-            <!-- Experience Roles -->
             <div class="experiences-list">
                 <div 
                     v-for="(experience, index) in company.experiences" 
@@ -110,7 +108,7 @@ const props = withDefaults(defineProps<ExperienceProps>(), {
         },
         {
             companyId: 'iisma',
-            title: 'Student Representative of Nanyang Technological University',
+            title: 'Student Representative of Nanyang Technological University, Singapore',
             duration: 'March 2024 - February 2025',
             startDate: new Date('2024-03-01'),
             endDate: new Date('2025-02-2'),
