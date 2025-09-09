@@ -165,6 +165,18 @@ onUnmounted(() => {
                 </div>
                 <div ref="otherProjectsRef">
                     <OtherProjectsGrid :projects="otherProjects" />
+                    <div class="key-content-footer" style="margin-top: 48px;">
+                        <p>Embarking on a new chapter..</p>
+                        <h2 style="font-size: 26px;">Next Stop: Experiences</h2>
+                        <h5>ride starts in 3.. 2.. 1..</h5>
+                    </div>
+                </div>
+                <div ref="experiencesRef">
+                    <div class="key-content-footer" style="margin-top: 48px;">
+                        <p>Psst.. we're almost at the end..</p>
+                        <h2 style="font-size: 26px;">Here's My Contact</h2>
+                        <h5>Don't forget to say hi! <br>Coffee dates await..</h5>
+                    </div>
                 </div>
             </div>
         </div>
