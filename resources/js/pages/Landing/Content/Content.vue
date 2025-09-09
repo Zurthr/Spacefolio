@@ -3,11 +3,13 @@ import { onMounted, onUnmounted, ref } from 'vue';
 import KeyContent from './KeyContent.vue';
 import ListOfContent from './ListOfContent.vue';
 import OtherProjectsGrid from './OtherProjectsGrid.vue';
+import Experience from './Experience.vue';
 
 const titleContainer = ref<HTMLElement | null>(null);
 const keyContentRef = ref<HTMLElement | null>(null);
 const otherProjectsRef = ref<HTMLElement | null>(null);
-const paddingTop = ref(24);
+const experiencesRef = ref<HTMLElement | null>(null);
+const paddingTop = ref(24); 
 const backgroundOpacity = ref(0);
 const activeSection = ref<'key-creations' | 'other-projects' | 'experiences' | 'contact'>('key-creations');
 
@@ -165,13 +167,14 @@ onUnmounted(() => {
                 </div>
                 <div ref="otherProjectsRef">
                     <OtherProjectsGrid :projects="otherProjects" />
-                    <div class="key-content-footer" style="margin-top: 48px;">
+                    <div class="key-content-footer" style="margin-top: 48px; padding-bottom: 0px;">
                         <p>Embarking on a new chapter..</p>
                         <h2 style="font-size: 26px;">Next Stop: Experiences</h2>
                         <h5>ride starts in 3.. 2.. 1..</h5>
                     </div>
                 </div>
                 <div ref="experiencesRef">
+                    <Experience />
                     <div class="key-content-footer" style="margin-top: 48px;">
                         <p>Psst.. we're almost at the end..</p>
                         <h2 style="font-size: 26px;">Here's My Contact</h2>
