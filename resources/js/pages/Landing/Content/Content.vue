@@ -4,6 +4,7 @@ import KeyContent from './KeyContent.vue';
 import ListOfContent from './ListOfContent.vue';
 import OtherProjectsGrid from './OtherProjectsGrid.vue';
 import Experience from './Experience.vue';
+import Whatsapp from './Whatsapp.vue';
 
 const titleContainer = ref<HTMLElement | null>(null);
 const keyContentRef = ref<HTMLElement | null>(null);
@@ -223,11 +224,26 @@ onUnmounted(() => {
                     </div>
                 </div>
                 <div ref="contactRef">
-                    <!-- Contact section content will go here -->
+                    <div class="contact-container">
+                        <div class="contact-header">
+                            <img src="/Assets/Icons/Mountain.svg" >
+                            <div class="contact-head-title">
+                                <h4 style="font-size: 20px; color: var(--color-light-gray-ii)">Email me <img src="/Assets/Icons/Email.svg" /></h4></div>
+                            <div class="contact-email"><h2 style="font-size:28px;">daffamzulfikar@gmail.com</h2></div>
+                            <h5 style="font-size: 18px; color: var(--color-light-gray-ii)">and check me out on..</h5>
+                            <div class="contact-links">
+                        <div style="display: flex; flex-direction: row; gap: 16px;"><a class="contact-link" href="https://www.linkedin.com/in/daffamzulfikar/" target="_blank"><img src="/Assets/Icons/LinkedIn.svg" >My LinkedIn</a>
+                            <a class="contact-link" href="https://www.instagram.com/zurufikar/" target="_blank"><img src="/Assets/Icons/Instagram.svg">My Instagram</a></div>
+                            <a class="contact-link" href="https://github.com/zurthr" target="_blank"><img src="/Assets/Icons/GitHub.svg">My GitHub</a>
+                        </div>
+                            <h5 style="font-size: 18px; color: var(--color-light-gray-ii)">Convince yourself further.</h5>
+                        </div>
+                        <Whatsapp />
+                    </div>
                     <div class="key-content-footer" style="margin-top: 48px;">
-                        <p>Psst.. we're almost at the end..</p>
-                        <h2 style="font-size: 26px;">Here's My Contact</h2>
-                        <h5>Don't forget to say hi! <br>Coffee dates await..</h5>
+                        <p>Seems like this is the edge..</p>
+                        <h2 style="font-size: 22px;">Thank you for visiting!</h2>
+                        <h5>Don't forget to say hi :]</h5>
                     </div>
                 </div>
             </div>
@@ -237,6 +253,63 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+.contact-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.contact-head-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width:fit-content;
+    align-items: center;
+    justify-content: center;
+}
+.contact-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    font-family: 'VCR OSD Mono';
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+    text-underline-offset: 4px;
+    transition: all 0.5s ease;
+}
+
+.contact-link:hover {
+    transform: scale(1.05);
+    transition: all 0.5s ease;
+}
+
+.contact-email {
+    display: flex;
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 2px dashed white;
+    width:fit-content;
+    transition: all 0.5s ease;
+}
+
+.contact-email:hover {
+    transform: scale(1.05);
+    transition: all 0.5s ease;
+    border: 2px solid white;
+}
 .title-container {
     display: flex;
     z-index: 100;

@@ -99,12 +99,20 @@ const props = withDefaults(defineProps<ExperienceProps>(), {
             description: 'Coordinated and Emceed weekly Local Commitee Meetings, handled various divisional team issues, bridged connection between internal and external parties. Worked with OGx to attain +200 NTU exchange participants across the globe.' 
         },
         {
+            companyId: 'SES',
+            title: 'FNCS Team Lead',
+            duration: 'November 2023 - November 2024',
+            startDate: new Date('2023-11-01'),
+            endDate: new Date('2024-11-2'),
+            description: 'Led the FNCS team in SES, leading the team in creating outgoing community service programs.'
+        },
+        {
             companyId: 'AIESEC',
             title: 'Outgoing Exchange OC - AIESEC in Bandung',
             duration: 'November 2023 - January 2024',
             startDate: new Date('2023-11-01'),
             endDate: new Date('2024-01-2'),
-            description: 'Lead the NTU IISMA Awardees, coordinating with Kemendikbud\'s IISMA office, GEM NTU, and Indonesian Embassy in Singapore to create impactful events throughout the duration of the program.',
+            description: 'Organizing Committee of Outgoing Exchange in Bandung. Organized meetings with international AIESEC members from Taiwan and the Philippines.',
         },
         {
             companyId: 'iisma',
@@ -112,7 +120,7 @@ const props = withDefaults(defineProps<ExperienceProps>(), {
             duration: 'March 2024 - February 2025',
             startDate: new Date('2024-03-01'),
             endDate: new Date('2025-02-2'),
-            description: 'Lead the NTU IISMA Awardees, coordinating with Kemendikbud\'s IISMA office, GEM NTU, and Indonesian Embassy in Singapore to create impactful events throughout the duration of the program.',
+            description: 'Led the NTU IISMA Awardees, coordinating with Kemendikbud\'s IISMA office, GEM NTU, and Indonesian Embassy in Singapore to create impactful events throughout the duration of the program.',
         },
         {
             companyId: 'daspro',
