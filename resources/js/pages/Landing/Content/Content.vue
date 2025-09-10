@@ -14,6 +14,7 @@ const contactRef = ref<HTMLElement | null>(null);
 const paddingTop = ref(24); 
 const backgroundOpacity = ref(0);
 const activeSection = ref<'key-creations' | 'other-projects' | 'experiences' | 'contact'>('key-creations');
+const isWhatsAppFormExpanded = ref(false);
 
 // Section configs
 const sectionTitles = {
@@ -41,6 +42,10 @@ const sectionTitles = {
         description: 'Let\'s build something together',
         subdescription: 'Coffee chats and collaboration await.'
     }
+};
+
+const handleWhatsAppFormToggle = (isExpanded: boolean) => {
+    isWhatsAppFormExpanded.value = isExpanded;
 };
 
 const otherProjects = ref([
@@ -224,21 +229,31 @@ onUnmounted(() => {
                     </div>
                 </div>
                 <div ref="contactRef">
-                    <div class="contact-container">
+                    <div class="contact-container" :class="{ 'expanded-layout': isWhatsAppFormExpanded }">
                         <div class="contact-header">
-                            <img src="/Assets/Icons/Mountain.svg" >
                             <div class="contact-head-title">
-                                <h4 style="font-size: 20px; color: var(--color-light-gray-ii)">Email me <img src="/Assets/Icons/Email.svg" /></h4></div>
-                            <div class="contact-email"><h2 style="font-size:28px;">daffamzulfikar@gmail.com</h2></div>
-                            <h5 style="font-size: 18px; color: var(--color-light-gray-ii)">and check me out on..</h5>
-                            <div class="contact-links">
-                        <div style="display: flex; flex-direction: row; gap: 16px;"><a class="contact-link" href="https://www.linkedin.com/in/daffamzulfikar/" target="_blank"><img src="/Assets/Icons/LinkedIn.svg" >My LinkedIn</a>
-                            <a class="contact-link" href="https://www.instagram.com/zurufikar/" target="_blank"><img src="/Assets/Icons/Instagram.svg">My Instagram</a></div>
-                            <a class="contact-link" href="https://github.com/zurthr" target="_blank"><img src="/Assets/Icons/GitHub.svg">My GitHub</a>
-                        </div>
+                                <h4 style="font-size: 20px; color: var(--color-light-gray-ii)">Email me <img src="/Assets/Icons/Email.svg" /></h4>
+                                <div class="contact-email"><h2 style="font-size:20px;">daffamzulfikar@gmail.com</h2>
+                                </div>
+                            </div>
+                            <!-- <img src="/Assets/Icons/Rocket.svg" > -->
+                            <div class="contact-head-title">
+                                <h5 style="font-size: 18px; color: var(--color-light-gray-ii)">and check me out on..</h5>
+                                <div class="contact-links">
+                                    <div class="contact-links-column">
+                                        <a class="contact-link" href="https://www.linkedin.com/in/daffamzulfikar/" target="_blank"><img src="/Assets/Icons/LinkedIn.svg" >LinkedIn</a>
+                                        <a class="contact-link" href="https://www.instagram.com/zurufikar/" target="_blank"><img src="/Assets/Icons/Instagram.svg">Instagram</a>
+                                    </div>
+                                    <div class="contact-links-column">
+                                        <a class="contact-link" href="https://github.com/zurthr" target="_blank"><img src="/Assets/Icons/GitHub.svg">GitHub</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contact-head-title">
                             <h5 style="font-size: 18px; color: var(--color-light-gray-ii)">Convince yourself further.</h5>
+                            <Whatsapp @form-toggled="handleWhatsAppFormToggle" />
+                            </div>
                         </div>
-                        <Whatsapp />
                     </div>
                     <div class="key-content-footer" style="margin-top: 48px;">
                         <p>Seems like this is the edge..</p>
@@ -253,27 +268,61 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-.contact-header {
+.contact-container {
     display: flex;
     flex-direction: column;
+    gap: 16px;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.contact-container.expanded-layout {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-container.expanded-layout .contact-header {
+    flex: 1;
+    max-width: 500px;
+}
+
+.contact-container.expanded-layout .whatsapp-contact-form {
+    flex: 1;
+    max-width: 600px;
+}
+
+.contact-header {
+    display: grid;
+    width:96%;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: flex-start;
+    justify-content: space-between;
 }
 .contact-head-title {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: center;
     gap: 8px;
 }
 .contact-links {
     display: flex;
+    flex-direction: row;
+    gap: 16px;
+    width: fit-content;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.contact-links-column {
+    display: flex;
     flex-direction: column;
     gap: 8px;
-    width:fit-content;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
 }
 .contact-link {
     display: flex;
@@ -288,6 +337,20 @@ onUnmounted(() => {
     text-align: center;
     text-underline-offset: 4px;
     transition: all 0.5s ease;
+}
+
+/* Responsive design for contact layout */
+@media (max-width: 768px) {
+    .contact-container.expanded-layout {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+    }
+    
+    .contact-container.expanded-layout .contact-header,
+    .contact-container.expanded-layout .whatsapp-contact-form {
+        max-width: 100%;
+    }
 }
 
 .contact-link:hover {

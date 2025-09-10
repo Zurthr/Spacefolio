@@ -1,228 +1,200 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
-
-interface FormData {
-  name: string;
-  representing: string;
-  isRepresentingMyself: boolean;
-  topic: string;
-  email: string;
-}
-
-const formData = ref<FormData>({
-  name: '',
-  representing: '',
-  isRepresentingMyself: false,
-  topic: '',
-  email: ''
-});
-
-const errors = ref<Partial<FormData>>({});
-
-const validateForm = (): boolean => {
-  errors.value = {};
-  
-  if (!formData.value.name.trim()) {
-    errors.value.name = 'Name is required';
-  }
-  
-  if (!formData.value.isRepresentingMyself && !formData.value.representing.trim()) {
-    errors.value.representing = 'Please specify who you represent or check "myself"';
-  }
-  
-  if (!formData.value.topic.trim()) {
-    errors.value.topic = 'Please specify what you\'d like to discuss';
-  }
-  
-  if (formData.value.email && !isValidEmail(formData.value.email)) {
-    errors.value.email = 'Please enter a valid email address';
-  }
-  
-  return Object.keys(errors.value).length === 0;
-};
-
-const isValidEmail = (email: string): boolean => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-};
-
-const whatsappMessage = computed(() => {
-  const representingText = formData.value.isRepresentingMyself 
-    ? 'myself' 
-    : formData.value.representing;
-    
-  let message = `Hello! I'm coming from your site!\nI'm ${formData.value.name}, representing ${representingText} and I'm here to chat with you regarding:\n${formData.value.topic}`;
-  
-  if (formData.value.email) {
-    message += `\n\n(optional) you can also email me at: ${formData.value.email}`;
-  }
-  
-  return message;
-});
-
-const whatsappUrl = computed(() => {
+const openWhatsAppDirect = () => {
   const phoneNumber = '6287888889990';
-  const encodedMessage = encodeURIComponent(whatsappMessage.value);
-  return `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-});
-
-const sendWhatsAppMessage = () => {
-  if (validateForm()) {
-    window.open(whatsappUrl.value, '_blank');
-  }
-};
-
-const toggleRepresentingMyself = () => {
-  formData.value.isRepresentingMyself = !formData.value.isRepresentingMyself;
-  if (formData.value.isRepresentingMyself) {
-    formData.value.representing = '';
-    delete errors.value.representing;
-  }
+  const message = "Hello! I'm coming from Zurufikar.dev!";
+  const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+  window.open(url, '_blank');
 };
 </script>
 
 <template>
-  <div class="whatsapp-contact-form">
-    <div class="form-header">
-      <h2 class="form-title">Let's Connect on WhatsApp</h2>
-      <p class="form-subtitle">Fill out the form below and I'll get your message instantly</p>
+  <div>
+    <!-- WhatsApp Trigger Button -->
+    <div class="whatsapp-contact-form">
+      <div 
+        @click="openWhatsAppDirect" 
+        class="form-trigger"
+      >
+        <div class="trigger-content">
+          <div class="whatsapp-contact-box">
+              <h4 class="trigger-title">Chat with me on Whatsapp!</h4>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    <form @submit.prevent="sendWhatsAppMessage" class="contact-form">
-      <!-- Name Field -->
-      <div class="form-group">
-        <label for="name" class="form-label">Your Name *</label>
-        <input
-          id="name"
-          v-model="formData.name"
-          type="text"
-          class="form-input"
-          :class="{ 'form-input--error': errors.name }"
-          placeholder="Enter your name"
-          maxlength="50"
-        />
-        <span v-if="errors.name" class="form-error">{{ errors.name }}</span>
-      </div>
-
-      <!-- Representing Field -->
-      <div class="form-group">
-        <label class="form-label">Representing *</label>
-        <div class="representing-section">
-          <div class="checkbox-wrapper">
-            <input
-              id="representing-myself"
-              type="checkbox"
-              :checked="formData.isRepresentingMyself"
-              @change="toggleRepresentingMyself"
-              class="form-checkbox"
-            />
-            <label for="representing-myself" class="checkbox-label">Myself</label>
-          </div>
-          
-          <div class="or-divider">
-            <span>OR</span>
-          </div>
-          
-          <input
-            v-model="formData.representing"
-            type="text"
-            class="form-input"
-            :class="{ 'form-input--error': errors.representing }"
-            :disabled="formData.isRepresentingMyself"
-            placeholder="Company/Organization name"
-            maxlength="100"
-          />
-        </div>
-        <span v-if="errors.representing" class="form-error">{{ errors.representing }}</span>
-      </div>
-
-      <!-- Topic Field -->
-      <div class="form-group">
-        <label for="topic" class="form-label">What would you like to discuss? *</label>
-        <textarea
-          id="topic"
-          v-model="formData.topic"
-          class="form-textarea"
-          :class="{ 'form-textarea--error': errors.topic }"
-          placeholder="Tell me what you'd like to chat about..."
-          rows="4"
-          maxlength="500"
-        ></textarea>
-        <div class="character-count">{{ formData.topic.length }}/500</div>
-        <span v-if="errors.topic" class="form-error">{{ errors.topic }}</span>
-      </div>
-
-      <!-- Email Field (Optional) -->
-      <div class="form-group">
-        <label for="email" class="form-label">Email (Optional)</label>
-        <input
-          id="email"
-          v-model="formData.email"
-          type="email"
-          class="form-input"
-          :class="{ 'form-input--error': errors.email }"
-          placeholder="your.email@example.com"
-          maxlength="100"
-        />
-        <span v-if="errors.email" class="form-error">{{ errors.email }}</span>
-      </div>
-
-      <!-- Preview Section -->
-      <div class="message-preview">
-        <h3 class="preview-title">Message Preview:</h3>
-        <div class="preview-content">
-          <pre>{{ whatsappMessage }}</pre>
-        </div>
-      </div>
-
-      <!-- Submit Button -->
-      <button type="submit" class="whatsapp-submit-btn">
-        <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.687"/>
-        </svg>
-        Send WhatsApp Message
-      </button>
-    </form>
   </div>
 </template>
 
 <style scoped>
 .whatsapp-contact-form {
+  width: 100%;
   max-width: 600px;
   margin: 0 auto;
-  padding: var(--space-8);
+  transition: all var(--transition-normal);
+}
+
+/* Collapsed State Styles - Match email contact styling */
+.form-trigger {
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  border-radius: 0;
+}
+
+.trigger-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+}
+
+.trigger-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 20px;
+  color: white;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.whatsapp-icon-trigger {
+  width: 24px;
+  height: 24px;
+  color: #25D366;
+  flex-shrink: 0;
+}
+
+.whatsapp-contact-box {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 2px dashed white;
+  width: fit-content;
+  transition: all 0.5s ease;
+}
+
+.whatsapp-contact-box h2 {
+  font-size: 20px;
+  margin: 0;
+  color: white;
+}
+
+.whatsapp-contact-box:hover {
+  transform: scale(1.05);
+  transition: all 0.5s ease;
+  border: 2px solid white;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeInModal 0.3s ease-out;
+}
+
+.modal-content {
   background: var(--color-dark-gray-i);
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-gray-i);
+  padding: var(--space-8);
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  animation: slideInModal 0.3s ease-out;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-.form-header {
-  text-align: center;
-  margin-bottom: var(--space-8);
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
 }
 
-.form-title {
+.modal-title {
   font-family: var(--font-family-heading-2);
   font-size: var(--font-size-2xl);
   color: var(--color-light-green-i);
-  margin-bottom: var(--space-2);
+  margin: 0;
 }
 
-.form-subtitle {
+.modal-close-btn {
+  background: none;
+  border: none;
+  color: var(--color-light-gray-i);
+  cursor: pointer;
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.modal-close-btn:hover {
+  background: var(--color-main-gray);
+  color: var(--color-light-gray-ii);
+}
+
+.modal-subtitle {
   color: var(--color-light-gray-i);
   font-size: var(--font-size-sm);
+  margin-bottom: var(--space-6);
+  text-align: center;
+}
+
+@keyframes fadeInModal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInModal {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: 4px;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: 4px;
 }
 
 .form-label {
@@ -266,54 +238,6 @@ const toggleRepresentingMyself = () => {
   font-family: inherit;
 }
 
-.representing-section {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-}
-
-.checkbox-wrapper {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-}
-
-.form-checkbox {
-  width: 18px;
-  height: 18px;
-  accent-color: var(--color-light-green-i);
-}
-
-.checkbox-label {
-  color: var(--color-light-gray-ii);
-  font-size: var(--font-size-sm);
-  cursor: pointer;
-}
-
-.or-divider {
-  text-align: center;
-  color: var(--color-gray-i);
-  font-size: var(--font-size-xs);
-  position: relative;
-}
-
-.or-divider::before,
-.or-divider::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  width: 40%;
-  height: 1px;
-  background: var(--color-gray-i);
-}
-
-.or-divider::before {
-  left: 0;
-}
-
-.or-divider::after {
-  right: 0;
-}
 
 .character-count {
   font-size: var(--font-size-xs);
@@ -387,24 +311,43 @@ const toggleRepresentingMyself = () => {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .whatsapp-contact-form {
+  .modal-content {
+    width: 95%;
+    max-width: none;
     padding: var(--space-6);
-    margin: var(--space-4);
   }
   
-  .form-title {
+  .modal-title {
     font-size: var(--font-size-xl);
   }
   
-  .representing-section {
-    gap: var(--space-2);
+  .trigger-title {
+    font-size: 18px;
+  }
+
+  .whatsapp-icon-trigger {
+    width: 20px;
+    height: 20px;
   }
 }
 
 @media (max-width: 480px) {
-  .whatsapp-contact-form {
+  .modal-content {
+    width: 98%;
     padding: var(--space-4);
-    margin: var(--space-2);
+    max-height: 90vh;
+  }
+
+  .modal-title {
+    font-size: var(--font-size-lg);
+  }
+
+  .trigger-title {
+    font-size: 16px;
+  }
+
+  .whatsapp-contact-box h2 {
+    font-size: 18px;
   }
   
   .contact-form {
