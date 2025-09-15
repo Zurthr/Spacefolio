@@ -128,7 +128,7 @@ onUnmounted(() => {
     width: 96%;
     transform-origin: center;
     justify-content: flex-end;
-    min-height:600px;
+    min-height:720px;
     max-height: 800px;
     position: relative;
     overflow: hidden;
@@ -172,7 +172,7 @@ onUnmounted(() => {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top center;
+    object-position: center;
     border-radius: 12px;
     z-index: -1;
 }
