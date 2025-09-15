@@ -9,7 +9,6 @@ const openWhatsAppDirect = () => {
 
 <template>
   <div>
-    <!-- WhatsApp Trigger Button -->
     <div class="whatsapp-contact-form">
       <div 
         @click="openWhatsAppDirect" 

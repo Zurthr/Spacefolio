@@ -19,7 +19,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import OtherProjects from './OtherProjects.vue';
+import OtherProjects from '../../../components/Landing/OtherProjects.vue';
 
 interface Project {
     media: string;

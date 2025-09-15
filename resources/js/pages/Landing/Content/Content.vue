@@ -206,7 +206,7 @@ onUnmounted(() => {
                         title="Task Management App"
                         description="Collaborative task management application with real-time updates, team collaboration features, and intuitive user interface."
                     />
-                    <div class="key-content-footer">
+                    <div class="content-footer">
                         <h2 style="font-size: 26px;">These pride-inducing creations from over the years</h2>
                         <p>Though there's plenty more below to see</p>
                         <h5>introducing...</h5>
@@ -214,7 +214,7 @@ onUnmounted(() => {
                 </div>
                 <div ref="otherProjectsRef">
                     <OtherProjectsGrid :projects="otherProjects" />
-                    <div class="key-content-footer" style="margin-top: 48px; padding-bottom: 0px;">
+                    <div class="content-footer" style="margin-top: 48px; padding-bottom: 0px;">
                         <p>Embarking on what made me, me..</p>
                         <h2 style="font-size: 26px;">Next Stop: Experiences</h2>
                         <h5>ride starts in 3.. 2.. 1..</h5>
@@ -222,7 +222,7 @@ onUnmounted(() => {
                 </div>
                 <div ref="experiencesRef">
                     <Experience />
-                    <div class="key-content-footer" style="margin-top: 48px; padding-bottom:0;">
+                    <div class="content-footer" style="margin-top: 48px; padding-bottom:0;">
                         <p>Psst.. we're almost at the end..</p>
                         <h2 style="font-size: 26px;">Here's My Contact</h2>
                         <h5>Coffee dates await..</h5>
@@ -230,9 +230,10 @@ onUnmounted(() => {
                 </div>
                 <div ref="contactRef">
                     <Contact :isWhatsAppFormExpanded="isWhatsAppFormExpanded" @form-toggled="handleWhatsAppFormToggle" />
-                    <div class="key-content-footer" style="margin-top: 48px;">
+                    <div class="content-footer" style="margin-top: 48px; padding-bottom:24px;">
                         <p>Seems like this is the edge..</p>
                         <h2 style="font-size: 22px;">Thank you for visiting!</h2>
+                        <h5>Don't forget to say hi :)</h5>
                     </div>
                 </div>
             </div>
@@ -324,7 +325,7 @@ onUnmounted(() => {
     z-index: 1;
 }
 
-.key-content-footer {
+.content-footer {
     display: flex;
     flex-direction: column;
     gap: 4px;

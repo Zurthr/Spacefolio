@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import Whatsapp from './Whatsapp.vue';
-import ImageCarousel from '../../../components/ImageCarousel.vue';
+import ImageCarousel from '../../../components/Landing/ImageCarousel.vue';
 
 interface Props {
     isWhatsAppFormExpanded?: boolean;

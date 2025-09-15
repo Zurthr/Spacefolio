@@ -138,7 +138,7 @@
 </template>
 
 <script setup lang="ts">
-import HeroSkillCard from './HeroSkillCard.vue';
+import HeroSkillCard from '../../components/Landing/HeroSkillCard.vue';
 </script>
 
 <style scoped>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Content from './Landing/Content/Content.vue';
-import Hero from './Landing/Hero.vue';
+import Hero from '../components/Landing/Hero.vue';
 import Navbar from './Navbar.vue';
 </script>
 
