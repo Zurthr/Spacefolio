@@ -29,7 +29,6 @@
                 </div> -->
             </div>
 
-            <!-- Right Section -->
             <div class="hero-right">
                 <div class="featured-container">
                     <img src="/Assets/Icons/Book.svg" />
@@ -37,7 +36,6 @@
                     <p>What I've built</p>
                 </div>
 
-                <!-- Build Section -->
                 <div class="build-section">
                     <div class="build-container">
                         <h3 style="text-align: right">Are you ready to</h3>
@@ -46,7 +44,7 @@
                         </h2>
                         <h4 style="text-align: right">your ideas? /~</h4>
                     </div>
-                    <div class="featured-container two">
+                    <div class="featured-container two" @click="handleSectionClick('contact')">
                         <img style="height: 52px" src="/Assets/Icons/Quill.svg" />
                         <div>
                             <h3>Start Now</h3>
@@ -139,6 +137,20 @@
 
 <script setup lang="ts">
 import HeroSkillCard from '../../components/Landing/HeroSkillCard.vue';
+defineProps({
+    activeSection: {
+        type: String,
+        default: 'key-creations'
+    }
+});
+
+const emit = defineEmits<{
+    scrollToSection: [section: 'key-creations' | 'other-projects' | 'experiences' | 'contact']
+}>();
+
+const handleSectionClick = (section: 'key-creations' | 'other-projects' | 'experiences' | 'contact') => {
+    emit('scrollToSection', section);
+};
 </script>
 
 <style scoped>
