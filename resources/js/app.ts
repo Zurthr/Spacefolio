@@ -21,3 +21,19 @@ createInertiaApp({
         color: '#4B5563',
     },
 });
+
+
+import { router } from '@inertiajs/vue3'
+
+router.on('navigate', (event: CustomEvent) => {
+  const url: string = event.detail.page.url
+  if (url.includes('#')) {
+    const hash = url.split('#')[1]
+    const el = document.getElementById(hash)
+    if (el) {
+      setTimeout(() => {
+        el.scrollIntoView({ behavior: 'smooth' })
+      }, 50)
+    }
+  }
+})

@@ -5,15 +5,19 @@ import ListOfContent from './ListOfContent.vue';
 import OtherProjectsGrid from './OtherProjectsGrid.vue';
 import Experience from './Experience.vue';
 import Contact from './Contact.vue';
+import Hero from '../../../components/Landing/Hero.vue';
+
 
 const titleContainer = ref<HTMLElement | null>(null);
 const keyContentRef = ref<HTMLElement | null>(null);
 const otherProjectsRef = ref<HTMLElement | null>(null);
 const experiencesRef = ref<HTMLElement | null>(null);
 const contactRef = ref<HTMLElement | null>(null);
+const heroRef = ref<HTMLElement | null>(null)
+
 const paddingTop = ref(24); 
 const backgroundOpacity = ref(0);
-const activeSection = ref<'key-creations' | 'other-projects' | 'experiences' | 'contact'>('key-creations');
+const activeSection = ref<'hero' | 'key-creations' | 'other-projects' | 'experiences' | 'contact'>('hero');
 const isWhatsAppFormExpanded = ref(false);
 
 // Section configs
@@ -37,6 +41,12 @@ const sectionTitles = {
         subdescription: 'Where I learned, grew, and made impact.'
     },
     'contact': {
+        title: 'Ready to start a',
+        subtitle: 'CONVERSATION',
+        description: 'Let\'s build something together',
+        subdescription: 'Coffee chats and collaboration await.'
+    },
+    'hero':{
         title: 'Ready to start a',
         subtitle: 'CONVERSATION',
         description: 'Let\'s build something together',
@@ -103,10 +113,14 @@ const handleScroll = () => {
     // Reuse windowHeight
     const scrollY = window.scrollY;
     const viewportCenter = scrollY + windowHeight / 2;
-    if (keyContentRef.value && otherProjectsRef.value && experiencesRef.value && contactRef.value) {
+    if (heroRef.value && keyContentRef.value && otherProjectsRef.value && experiencesRef.value && contactRef.value) {
         const keyContentRect = keyContentRef.value.getBoundingClientRect();
         const keyContentTop = scrollY + keyContentRect.top;
         const keyContentBottom = keyContentTop + keyContentRect.height;
+
+        const heroRect = heroRef.value.getBoundingClientRect()
+        const heroTop = scrollY + heroRect.top
+        const heroBottom = heroTop + heroRect.height
 
         const otherProjectsRect = otherProjectsRef.value.getBoundingClientRect();
         const otherProjectsTop = scrollY + otherProjectsRect.top;
@@ -120,46 +134,40 @@ const handleScroll = () => {
         const contactTop = scrollY + contactRect.top;
         const contactBottom = contactTop + contactRect.height;
 
+        let newSection: typeof activeSection.value | null = null;
+
         if (viewportCenter >= keyContentTop && viewportCenter < keyContentBottom) {
-            activeSection.value = 'key-creations';
+            newSection = 'key-creations';
         } else if (viewportCenter >= otherProjectsTop && viewportCenter < otherProjectsBottom) {
-            activeSection.value = 'other-projects';
+            newSection = 'other-projects';
         } else if (viewportCenter >= experiencesTop && viewportCenter < experiencesBottom) {
-            activeSection.value = 'experiences';
+            newSection = 'experiences';
         } else if (viewportCenter >= contactTop && viewportCenter < contactBottom) {
-            activeSection.value = 'contact';
+            newSection = 'contact';
         }
+        else if (viewportCenter >= heroTop && viewportCenter < heroBottom) {
+            newSection = 'hero';
+        }
+
+        if (newSection && activeSection.value !== newSection) {
+            activeSection.value = newSection;
+            history.replaceState(null, '', `#${newSection}`);}
     }
 };
 
-const scrollToSection = (section: 'key-creations' | 'other-projects' | 'experiences' | 'contact') => {
-    let targetRef: HTMLElement | null = null;
-    
-    switch (section) {
-        case 'key-creations':
-            targetRef = keyContentRef.value;
-            break;
-        case 'other-projects':
-            targetRef = otherProjectsRef.value;
-            break;
-        case 'experiences':
-            targetRef = experiencesRef.value;
-            break;
-        case 'contact':
-            targetRef = contactRef.value;
-            break;
-    }
-    
-    if (targetRef) {
-        const rect = targetRef.getBoundingClientRect();
-        const scrollTop = window.scrollY || document.documentElement.scrollTop;
-        const targetPosition = rect.top + scrollTop - 140;
-        window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-        });
-    }
-};
+
+const scrollToSection = (section: string) => {
+  const target = document.getElementById(section)
+  if (target) {
+    const rect = target.getBoundingClientRect()
+    const scrollTop = window.scrollY || document.documentElement.scrollTop
+    const targetPosition = rect.top + scrollTop - 140
+    window.scrollTo({
+      top: targetPosition,
+      behavior: 'smooth'
+    })
+  }
+}
 
 onMounted(() => {
     window.addEventListener('scroll', handleScroll);
@@ -172,6 +180,9 @@ onUnmounted(() => {
 </script>
 
 <template>
+    <div id="hero" ref="heroRef">
+    <Hero :activeSection="activeSection" @scrollToSection="scrollToSection" />
+    </div>
     <div class="content-background">
         <div class="background-image"></div>
         <div class="content-section">
@@ -188,7 +199,7 @@ onUnmounted(() => {
                 </div>
             </div>
             <div class="content-items">
-                <div class="key-content" ref="keyContentRef">
+                <div class="key-content" ref="keyContentRef" id="key-creations">
                     <KeyContent
                         media="/Assets/Videos/BIMain.mp4"
                         title="Portal Data External Bank Indonesia"
@@ -212,7 +223,7 @@ onUnmounted(() => {
                         <h5>introducing...</h5>
                     </div>
                 </div>
-                <div ref="otherProjectsRef">
+                <div ref="otherProjectsRef" id="other-projects">
                     <OtherProjectsGrid :projects="otherProjects" />
                     <div class="content-footer" style="margin-top: 48px; padding-bottom: 0px;">
                         <p>Embarking on what made me, me..</p>
@@ -220,7 +231,7 @@ onUnmounted(() => {
                         <h5>ride starts in 3.. 2.. 1..</h5>
                     </div>
                 </div>
-                <div ref="experiencesRef">
+                <div ref="experiencesRef" id="experiences">
                     <Experience />
                     <div class="content-footer" style="margin-top: 48px; padding-bottom:0;">
                         <p>Psst.. we're almost at the end..</p>
@@ -228,7 +239,7 @@ onUnmounted(() => {
                         <h5>Coffee dates await..</h5>
                     </div>
                 </div>
-                <div ref="contactRef">
+                <div ref="contactRef" id="contact">
                     <Contact :isWhatsAppFormExpanded="isWhatsAppFormExpanded" @form-toggled="handleWhatsAppFormToggle" />
                     <div class="content-footer" style="margin-top: 48px; padding-bottom:24px;">
                         <p>Seems like this is the edge..</p>
