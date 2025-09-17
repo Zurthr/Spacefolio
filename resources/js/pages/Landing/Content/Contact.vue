@@ -21,42 +21,11 @@ const handleWhatsAppFormToggle = (isExpanded: boolean) => {
     emit('form-toggled', isExpanded);
 };
 
-// Sample images for the carousel - you can replace these with your actual images
-const carouselImages = ref([
-    {
-        src: '/Assets/Images/AcademifyMAIN.png',
-        alt: 'Academify Project'
-    },
-    {
-        src: '/Assets/Images/Content/Task Management.png',
-        alt: 'Task Management App'
-    },
-    {
-        src: '/Assets/Images/Footer2.png',
-        alt: 'Portfolio Background'
-    },
-    {
-        src: '/Assets/Icons/LinkedIn.svg',
-        alt: 'LinkedIn'
-    },
-    {
-        src: '/Assets/Icons/GitHub.svg',
-        alt: 'GitHub'
-    },
-    {
-        src: '/Assets/Icons/Instagram.svg',
-        alt: 'Instagram'
-    },
-    {
-        src: '/Assets/Icons/Email.svg',
-        alt: 'Email'
-    }
-]);
 </script>
 
 <template>
     <div class="carousel-section">
-        <img src="Assets/Videos/ContactHead.gif">
+        <!-- <img src="Assets/Videos/ContactHead.gif" style="height:100%;"> -->
     </div>
     <div class="contact-container" :class="{ 'expanded-layout': isWhatsAppFormExpanded }">
         <div class="contact-header">
@@ -190,6 +159,29 @@ const carouselImages = ref([
     transform: scale(1.05);
     transition: all 0.5s ease;
     border: 2px solid white;
+}
+
+.carousel-section {
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 425.33px;
+    width:1200px;
+    background: url('/Assets/Videos/ContactHead.gif') center/cover no-repeat;
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, 
+        rgba(0,0,0,1) 70%, 
+        rgba(0,0,0,0) 100%);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: cover;
+    mask-image: radial-gradient(circle at 50% 50%, 
+        rgba(0,0,0,1) 70%, 
+        rgba(0,0,0,0) 100%);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: cover;
+    margin-bottom:24px;
 }
 
 </style>
