@@ -74,6 +74,16 @@ const otherProjects = ref([
         title: "Cassava Leaf Disease Classification",
         description: "Image Classification Model for Cassava Leaf Disease Detection."
     },
+    {
+        media: "/Assets/Images/Content/Task Management.png",
+        title: "Fruity Froggy",
+        description: "A game I made in 2022, available in Itch.io"
+    },
+    {
+        media: "/Assets/Images/Content/Task Management.png",
+        title: "Spacefolio",
+        description: "Portfolio 2.0, wait, hey! You're here! :D"
+    },
 ]);
 
 const handleScroll = () => {

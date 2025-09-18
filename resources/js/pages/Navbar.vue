@@ -26,7 +26,7 @@ const closeModal = () => {
 // }, { immediate: true });
 
 
-const scrollToSection = (section: 'key-creations' | 'other-projects' | 'experiences' | 'contact') => {
+const scrollToSection = (section: 'hero'| 'key-creations' | 'other-projects' | 'experiences' | 'contact') => {
     let targetRef: HTMLElement | null = null;
     
     switch (section) {
@@ -35,6 +35,9 @@ const scrollToSection = (section: 'key-creations' | 'other-projects' | 'experien
             break;
         case 'other-projects':
             targetRef = document.querySelector('.other-projects') as HTMLElement;
+            break;
+        case 'hero':
+            targetRef = document.querySelector('.hero-content') as HTMLElement;
             break;
         case 'experiences':
             targetRef = document.querySelector('.experiences-container') as HTMLElement;
@@ -55,7 +58,7 @@ const scrollToSection = (section: 'key-creations' | 'other-projects' | 'experien
     }
 };
 
-const handleNavClick = (route: string, section?: 'key-creations' | 'other-projects' | 'experiences' | 'contact') => {
+const handleNavClick = (route: string, section?: 'hero'|'key-creations' | 'other-projects' | 'experiences' | 'contact') => {
     if (section) {
         if (page.url === '/') {
             scrollToSection(section);
@@ -101,8 +104,8 @@ onUnmounted(() => {
         <div class="navbar-border-1"></div>
 
         <div class="navbar-container">
-            <div style="height: 56px; padding: 4px 0" class="glass">
-                <Link style="height: 56px" href="/" class="logo-link"><img style="height: 48px" src="/Assets/ZurLogo.png" alt="Logo" /></Link>
+            <div style="height: 56px; cursor:pointer; padding: 4px 0"  @click="handleNavClick('/', 'hero')">
+                <div style="height: 56px; background:none;"  class="logo-link"><img style="height: 48px" src="/Assets/ZurLogo.png" alt="Logo" /></div>
             </div>
 
             <!-- <div class="navbar-nav glass" :class="{ 'chat-visible': isChatBottomVisible }">

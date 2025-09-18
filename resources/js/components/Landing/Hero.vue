@@ -30,25 +30,25 @@
             </div>
 
             <div class="hero-right">
-                <div class="featured-container">
-                    <img src="/Assets/Icons/Book.svg" />
-                    <h3>Create Things</h3>
-                    <p>What I've built</p>
+                <div class="featured-container" @click="handleSectionClick('key-creations')">
+                    <img src="/Assets/Icons/Book.svg" style="z-index: 1000;">
+                    <h3 style="z-index: 1000;">Create Things</h3>
+                    <p style="z-index: 1000;">What I've built</p>
                 </div>
 
                 <div class="build-section">
                     <div class="build-container">
-                        <h3 style="text-align: right">Are you ready to</h3>
+                        <h3 style="text-align: right; ">Are you ready to</h3>
                         <h2 style="text-align: right; font-size: 48px">
-                            <img src="/Assets/Icons/Books.svg" style="height: 40px; margin-right: 8px" />BUILD
+                            <img src="/Assets/Icons/Books.svg" style="height: 40px; margin-right: 8px" >BUILD
                         </h2>
                         <h4 style="text-align: right">your ideas? /~</h4>
                     </div>
                     <div class="featured-container two" @click="handleSectionClick('contact')">
-                        <img style="height: 52px" src="/Assets/Icons/Quill.svg" />
+                        <img style="height: 52px; z-index: 1000;" src="/Assets/Icons/Quill.svg" >
                         <div>
-                            <h3>Start Now</h3>
-                            <p>Contact</p>
+                            <h3 style="z-index: 1000;">Start Now</h3>
+                            <p style="z-index: 1000;">Contact</p>
                         </div>
                     </div>
                 </div>
@@ -124,9 +124,9 @@
                 <h5>to partake in their <u>grand designs</u>.</h5>
             </div>
             <div class="hero-bottom-right">
-                <img src="/Assets/Images/BottomRight.svg" />
+                <!-- <img src="/Assets/Images/BottomRight.svg" /> -->
                 <h5 style="color: #ccd3d9">Be convinced. /~</h5>
-                <div style="display: flex; gap: 4px; background: #27292a; align-items: center; padding: 0 2px">
+                <div style="display: flex; cursor:pointer; gap: 4px; background: #27292a; align-items: center; padding: 0 2px" @click="handleSectionClick('key-creations')">
                     <h5>.scroll-down</h5>
                     <img style="height: 16px" src="/Assets/Icons/Arrow Down.svg" />
                 </div>
@@ -238,6 +238,7 @@ const handleSectionClick = (section: 'key-creations' | 'other-projects' | 'exper
 }
 
 .featured-container {
+    position: relative;
     margin-top: 12px;
     display: flex;
     height: 320px;
@@ -251,6 +252,8 @@ const handleSectionClick = (section: 'key-creations' | 'other-projects' | 'exper
     background:
         linear-gradient(0deg, rgba(57, 60, 63, 0.26) 0%, rgba(57, 60, 63, 0.26) 100%),
         url('/Assets/Images/FeaturedPlaceholder.gif') lightgray 50% / cover no-repeat;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .featured-container.two {
@@ -264,6 +267,30 @@ const handleSectionClick = (section: 'key-creations' | 'other-projects' | 'exper
         linear-gradient(0deg, rgba(57, 60, 63, 0.26) 0%, rgba(57, 60, 63, 0.26) 100%),
         url('/Assets/Images/Featured2Placeholder.gif') lightgray 50% / cover no-repeat;
 }
+
+.featured-container:hover{
+    /* transform: scale(1.01); */
+    transition: all 0.3s ease;
+}
+
+.featured-container:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #34343625;
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+    z-index: 1;
+}
+
+.featured-container:hover:before {
+    opacity: 1;
+}
+
 
 .build-section {
     display: flex;

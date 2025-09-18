@@ -49,7 +49,7 @@ const projectRows = computed(() => {
 .other-projects {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 32px;
     width: 100%;
     padding: 0 24px;
 }
@@ -57,7 +57,7 @@ const projectRows = computed(() => {
 .projects-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 36px;
+    gap: 24px;
     width: 100%;
 }
 
