@@ -1,11 +1,32 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue';
+import { onMounted, onUnmounted, ref, provide } from 'vue';
 import KeyContent from './KeyContent.vue';
 import ListOfContent from './ListOfContent.vue';
 import OtherProjectsGrid from './OtherProjectsGrid.vue';
 import Experience from './Experience.vue';
 import Contact from './Contact.vue';
 import Hero from '../../../components/Landing/Hero.vue';
+import WorkInProgressModal from '../../../components/WorkInProgressModal.vue';
+
+const isModalOpen = ref(false);
+const modalTitle = ref<string | undefined>(undefined);
+const modalMessage = ref<string | undefined>(undefined);
+const modalVariantId = ref<number | undefined>(undefined);
+
+
+type OpenModalOptions = { title?: string; message?: string; variantId?: number };
+
+const openModal = (options?: OpenModalOptions) => {
+    modalTitle.value = options?.title;
+    modalMessage.value = options?.message;
+    modalVariantId.value = options?.variantId;
+    isModalOpen.value = true;
+};
+
+const closeModal = () => {
+    isModalOpen.value = false;
+};
+
 
 
 const titleContainer = ref<HTMLElement | null>(null);
@@ -214,18 +235,21 @@ onUnmounted(() => {
                         media="/Assets/Videos/BIMain.mp4"
                         title="Portal Data External Bank Indonesia"
                         description="Central Bank of Indonesia's portal data site for external users to access monetary data."
+                        :openModal="openModal"
                     />
 
                     <KeyContent
                         media="/Assets/Videos/ArchipelMain.mp4"
                         title="Archipel Map"
                         description="A modern, responsive portfolio website built with Laravel, Vue.js, and TypeScript. Features smooth animations, dynamic content, and a sleek design inspired by space aesthetics."
+                        :openModal="openModal"
                     />
 
                     <KeyContent
                         media="/Assets/Images/Content/Task Management.png"
                         title="Task Management App"
                         description="Collaborative task management application with real-time updates, team collaboration features, and intuitive user interface."
+                        :openModal="openModal"
                     />
                     <div class="content-footer">
                         <h2 style="font-size: 26px;">These pride-inducing creations from over the years</h2>
@@ -234,7 +258,7 @@ onUnmounted(() => {
                     </div>
                 </div>
                 <div ref="otherProjectsRef" id="other-projects">
-                    <OtherProjectsGrid :projects="otherProjects" />
+                    <OtherProjectsGrid :projects="otherProjects" :openModal="openModal" />
                     <div class="content-footer" style="margin-top: 48px; padding-bottom: 0px;">
                         <p>Embarking on what made me, me..</p>
                         <h2 style="font-size: 26px;">Next Stop: Experiences</h2>
@@ -261,6 +285,7 @@ onUnmounted(() => {
         </div>
         </div>
     </div>
+    <WorkInProgressModal :isOpen="isModalOpen" :title="modalTitle" :message="modalMessage" :variantId="modalVariantId" @close="closeModal" />
 </template>
 
 <style scoped>

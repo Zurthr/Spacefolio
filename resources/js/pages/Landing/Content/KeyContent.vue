@@ -6,6 +6,7 @@
             transform: `scale(${transformScale})`,
             '--bg-image': isVideo ? 'none' : `url(${props.media})`
         }"
+		@click="props.openModal({ variantId: 1 })"
         @mouseenter="handleMouseEnter"
         @mouseleave="handleMouseLeave"
     >
@@ -29,16 +30,22 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, computed } from 'vue';
+import { ref, onMounted, onUnmounted, computed, inject } from 'vue';
+
+
+
+type OpenModalOptions = { title?: string; message?: string; variantId?: number };
 
 interface Props {
     title: string;
     description: string;
     media: string;
+    openModal: (options?: OpenModalOptions) => void;
 }
 
 const props = withDefaults(defineProps<Props>(), {
     media: '',
+    openModal: () => {},
 });
 
 // Check if the media is a video file
@@ -196,6 +203,7 @@ onUnmounted(() => {
     transition: transform 0.3s ease;
     transform: translateY(16px);
 }
+
 
 
 .key-content__description {

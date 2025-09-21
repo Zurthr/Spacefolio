@@ -3,6 +3,7 @@
         ref="keyContentRef" 
         :class="['projects', { interactive: isInteractive }]"
         :style="rootStyle"
+        @click="props.openModal && props.openModal({ variantId: 1 })"
     >
         <video 
             v-if="isVideo"
@@ -26,11 +27,14 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed } from 'vue';
 
+type OpenModalOptions = { title?: string; message?: string; variantId?: number };
+
 interface Props {
     title: string;
     description: string;
     media: string;
     index?: number;
+    openModal?: (options?: OpenModalOptions) => void;
 }
 
 const props = withDefaults(defineProps<Props>(), {

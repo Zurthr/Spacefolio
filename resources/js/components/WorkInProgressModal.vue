@@ -1,8 +1,11 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+
 interface Props {
   isOpen: boolean;
   title?: string;
   message?: string;
+  variantId?: number;
 }
 
 interface Emits {
@@ -19,6 +22,24 @@ const emit = defineEmits<Emits>();
 const closeModal = () => {
   emit('close');
 };
+
+const computedTitle = computed(() => {
+  switch (props.variantId) {
+    case 1:
+      return "Still in the works!";
+    default:
+      return props.title;
+  }
+});
+
+const computedMessage = computed(() => {
+  switch (props.variantId) {
+    case 1:
+      return 'Writing this right now.. Check back next time';
+    default:
+      return props.message;
+  }
+});
 </script>
 
 <template>
@@ -28,8 +49,8 @@ const closeModal = () => {
         <!-- <button class="modal-close" @click="closeModal">&times;</button> -->
         <img src="/Assets/Images/Smolverse-Type.gif" style="width: auto; height: 80px; margin-top:-20px; border-radius: 16px;" >
         <div class="modal-body">
-          <h2 class="modal-title">{{ title }}</h2>
-          <p class="modal-message">{{ message }}</p>
+          <h2 class="modal-title">{{ computedTitle }}</h2>
+          <p class="modal-message">{{ computedMessage }}</p>
         </div>
       </div>
     </div>

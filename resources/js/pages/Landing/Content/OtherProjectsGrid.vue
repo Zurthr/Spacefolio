@@ -12,6 +12,7 @@
                 :media="project.media"
                 :title="project.title"
                 :description="project.description"
+                :openModal="openModal"
             />
         </div>
     </div>
@@ -29,6 +30,7 @@ interface Project {
 
 interface Props {
     projects: Project[];
+    openModal?: (options?: { title?: string; message?: string; variantId?: number }) => void;
 }
 
 const props = defineProps<Props>();
