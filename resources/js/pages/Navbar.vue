@@ -7,7 +7,6 @@ const page = usePage();
 const isModalOpen = ref(false);
 const isChatBottomVisible = ref(false);
 
-// const workInProgressRoutes = ['/me', '/creations', '/experiences'];
 
 const openModal = () => {
     isModalOpen.value = true;
@@ -16,14 +15,6 @@ const openModal = () => {
 const closeModal = () => {
     isModalOpen.value = false;
 };
-
-// watch(() => page.url, (newUrl) => {
-//     if (workInProgressRoutes.includes(newUrl)) {
-//         isModalOpen.value = true;
-//     } else {
-//         isModalOpen.value = false;
-//     }
-// }, { immediate: true });
 
 
 const scrollToSection = (section: 'hero'| 'key-creations' | 'other-projects' | 'experiences' | 'contact') => {
