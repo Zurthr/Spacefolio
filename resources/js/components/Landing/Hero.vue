@@ -69,7 +69,7 @@
                             <img src="/Assets/Icons/Marquee/Archipel.svg" alt="Archipel" />
                         </div>
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/Marquee/Bi.svg" alt="Bi" />
+                            <img src="/Assets/Icons/Marquee/BI.svg" alt="Bi" />
                         </div>
                         <div class="marquee-item">
                             <img src="/Assets/Icons/Marquee/Cybersec.svg" alt="Cybersec" />
@@ -99,7 +99,7 @@
                             <img src="/Assets/Icons/Marquee/Archipel.svg" alt="Archipel" />
                         </div>
                         <div class="marquee-item">
-                            <img src="/Assets/Icons/Marquee/Bi.svg" alt="BiBlue" />
+                            <img src="/Assets/Icons/Marquee/BI.svg" alt="BiBlue" />
                         </div>
                         <div class="marquee-item">
                             <img src="/Assets/Icons/Marquee/Cybersec.svg" alt="Cybersec" />

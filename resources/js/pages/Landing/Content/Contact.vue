@@ -38,11 +38,11 @@ const handleWhatsAppFormToggle = (isExpanded: boolean) => {
                 <h5 style="font-size: 18px; color: var(--color-light-gray-ii)">and check me out on..</h5>
                 <div class="contact-links">
                     <div class="contact-links-column">
-                        <a class="contact-link" href="https://www.linkedin.com/in/daffamzulfikar/" target="_blank"><img src="/Assets/Icons/LinkedIn.svg" >LinkedIn</a>
+                        <a class="contact-link" href="https://www.linkedin.com/in/daffamzulfikar/" target="_blank"><img src="/Assets/Icons/Linkedin.svg" >LinkedIn</a>
                         <a class="contact-link" href="https://www.instagram.com/zurufikar/" target="_blank"><img src="/Assets/Icons/Instagram.svg">Instagram</a>
                     </div>
                     <div class="contact-links-column">
-                        <a class="contact-link" href="https://github.com/zurthr" target="_blank"><img src="/Assets/Icons/GitHub.svg">GitHub</a>
+                        <a class="contact-link" href="https://github.com/zurthr" target="_blank"><img src="/Assets/Icons/Github.svg">GitHub</a>
                     </div>
                 </div>
             </div>
