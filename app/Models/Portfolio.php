@@ -12,7 +12,8 @@ class Portfolio extends Model
         'media',
         'type',
         'order',
-        'is_active'
+        'is_active',
+        'redirect_url'
     ];
 
     protected $casts = [

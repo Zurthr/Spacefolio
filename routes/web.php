@@ -15,10 +15,6 @@ Route::get('/', function () {
         ->ordered()
         ->get();
 
-    // Debug: Log the data being passed
-    \Log::info('Key Creations Count: ' . $keyCreations->count());
-    \Log::info('Other Projects Count: ' . $otherProjects->count());
-
     return Inertia::render('Landing', [
         'keyCreations' => $keyCreations,
         'otherProjects' => $otherProjects

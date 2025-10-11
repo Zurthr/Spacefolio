@@ -16,11 +16,13 @@ interface PortfolioItem {
 interface Props {
     keyCreations?: PortfolioItem[];
     otherProjects?: PortfolioItem[];
+    debug?: any;
 }
 
 const props = withDefaults(defineProps<Props>(), {
     keyCreations: () => [],
-    otherProjects: () => []
+    otherProjects: () => [],
+    debug: () => null
 });
 </script>
 

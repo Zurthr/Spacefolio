@@ -17,6 +17,7 @@ interface PortfolioItem {
     type: 'key' | 'other';
     order: number;
     is_active: boolean;
+    redirect_url?: string;
 }
 
 interface Props {
@@ -226,13 +227,13 @@ onUnmounted(() => {
             </div>
             <div class="content-items">
                 <div class="key-content" ref="keyContentRef" id="key-creations">
-                    <!-- Debug: {{ props.keyCreations.length }} items -->
                     <KeyContent
                         v-for="item in props.keyCreations"
                         :key="item.id"
                         :media="item.media"
                         :title="item.title"
                         :description="item.description"
+                        :redirect-url="item.redirect_url"
                         :openModal="openModal"
                     />
                     <div class="content-footer">
@@ -242,7 +243,6 @@ onUnmounted(() => {
                     </div>
                 </div>
                 <div ref="otherProjectsRef" id="other-projects">
-                    <!-- Debug: {{ props.otherProjects.length }} other projects -->
                     <OtherProjectsGrid :projects="props.otherProjects" :openModal="openModal" />
                     <div class="content-footer" style="margin-top: 48px; padding-bottom: 0px;">
                         <p>Embarking on what made me, me..</p>

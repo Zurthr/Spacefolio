@@ -3,7 +3,7 @@
         ref="keyContentRef" 
         :class="['projects', { interactive: isInteractive }]"
         :style="rootStyle"
-        @click="props.openModal && props.openModal({ variantId: 1 })"
+        @click="handleClick"
     >
         <video 
             v-if="isVideo"
@@ -34,13 +34,23 @@ interface Props {
     description: string;
     media: string;
     index?: number;
+    redirectUrl?: string;
     openModal?: (options?: OpenModalOptions) => void;
 }
 
 const props = withDefaults(defineProps<Props>(), {
     media: '',
     index: 0,
+    redirectUrl: '',
 });
+
+const handleClick = () => {
+    if (props.redirectUrl) {
+        window.open(props.redirectUrl, '_blank');
+    } else if (props.openModal) {
+        props.openModal({ variantId: 1 });
+    }
+};
 const isVideo = computed(() => {
     const videoExtensions = ['.mp4', '.webm', '.ogg', '.mov', '.avi', '.mkv'];
     return videoExtensions.some(ext => props.media.toLowerCase().endsWith(ext));

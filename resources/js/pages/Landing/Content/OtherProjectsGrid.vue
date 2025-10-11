@@ -12,6 +12,7 @@
                 :media="project.media"
                 :title="project.title"
                 :description="project.description"
+                :redirect-url="project.redirect_url"
                 :openModal="openModal"
             />
         </div>
@@ -26,6 +27,7 @@ interface Project {
     media: string;
     title: string;
     description: string;
+    redirect_url?: string;
 }
 
 interface Props {

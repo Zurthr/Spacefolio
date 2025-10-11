@@ -6,7 +6,7 @@
             transform: `scale(${transformScale})`,
             '--bg-image': isVideo ? 'none' : `url(${props.media})`
         }"
-		@click="props.openModal({ variantId: 1 })"
+		@click="handleClick"
         @mouseenter="handleMouseEnter"
         @mouseleave="handleMouseLeave"
     >
@@ -40,13 +40,25 @@ interface Props {
     title: string;
     description: string;
     media: string;
+    redirectUrl?: string;
     openModal: (options?: OpenModalOptions) => void;
 }
 
 const props = withDefaults(defineProps<Props>(), {
     media: '',
+    redirectUrl: '',
     openModal: () => {},
 });
+
+const handleClick = () => {
+    if (props.redirectUrl) {
+        // Redirect to the specified URL
+        window.open(props.redirectUrl, '_blank');
+    } else {
+        // Open the modal for "under construction"
+        props.openModal({ variantId: 1 });
+    }
+};
 
 // Check if the media is a video file
 const isVideo = computed(() => {
