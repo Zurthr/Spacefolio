@@ -26,7 +26,6 @@ const getImagePosition = (index: number) => {
   const diff = index - currentIndex.value;
   const totalImages = props.images.length;
   
-  // Normalize the difference to be between -totalImages/2 and totalImages/2
   let normalizedDiff = diff;
   if (normalizedDiff > totalImages / 2) {
     normalizedDiff -= totalImages;
@@ -41,19 +40,11 @@ const getImageStyle = (index: number) => {
   const position = getImagePosition(index);
   const absPosition = Math.abs(position);
   
-  // Z-index: active image has highest z-index, others decrease based on distance
   const zIndex = position === 0 ? 100 : 100 - absPosition;
   
-  // Scale: active image is full size, others get smaller as they go back
   const scale = position === 0 ? 1 : Math.max(0.7, 1 - absPosition * 0.15);
-  
-  // Opacity: active image is full opacity, others fade progressively
   const opacity = position === 0 ? 1 : Math.max(0.4, 1 - absPosition * 0.2);
-  
-  // X translation for overlapping positioning - smaller gaps for overlap effect
-  const translateX = position * 150; // Much smaller gap for overlapping
-  
-  // Z translation to create depth effect (moving to back)
+  const translateX = position * 150; 
   const translateZ = -absPosition * 50;
   
   return {

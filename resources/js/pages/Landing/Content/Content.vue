@@ -8,6 +8,27 @@ import Contact from './Contact.vue';
 import Hero from '../../../components/Landing/Hero.vue';
 import WorkInProgressModal from '../../../components/WorkInProgressModal.vue';
 
+// Define props for portfolio data
+interface PortfolioItem {
+    id: number;
+    title: string;
+    description: string;
+    media: string;
+    type: 'key' | 'other';
+    order: number;
+    is_active: boolean;
+}
+
+interface Props {
+    keyCreations?: PortfolioItem[];
+    otherProjects?: PortfolioItem[];
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    keyCreations: () => [],
+    otherProjects: () => []
+});
+
 const isModalOpen = ref(false);
 const modalTitle = ref<string | undefined>(undefined);
 const modalMessage = ref<string | undefined>(undefined);
@@ -79,33 +100,7 @@ const handleWhatsAppFormToggle = (isExpanded: boolean) => {
     isWhatsAppFormExpanded.value = isExpanded;
 };
 
-const otherProjects = ref([
-    {
-        media: "/Assets/Images/AcademifyMAIN.png",
-        title: "Academify",
-        description: "Educational Application for Teachers and Students to manage their learning journey."
-    },
-    {
-        media: "/Assets/Images/Content/Task Management.png",
-        title: "Singapore HDB Affordability Dashboard",
-        description: "Modern e-commerce solution with advanced product catalog, secure payment processing, and comprehensive admin dashboard."
-    },
-    {
-        media: "/Assets/Images/Content/Task Management.png",
-        title: "Cassava Leaf Disease Classification",
-        description: "Image Classification Model for Cassava Leaf Disease Detection."
-    },
-    {
-        media: "/Assets/Images/Content/Task Management.png",
-        title: "Fruity Froggy",
-        description: "A game I made in 2022, available in Itch.io"
-    },
-    {
-        media: "/Assets/Images/Content/Task Management.png",
-        title: "Spacefolio",
-        description: "Portfolio 2.0, wait, hey! You're here! :D"
-    },
-]);
+// otherProjects is now passed as props from the database
 
 const handleScroll = () => {
     if (!titleContainer.value) return;
@@ -231,24 +226,13 @@ onUnmounted(() => {
             </div>
             <div class="content-items">
                 <div class="key-content" ref="keyContentRef" id="key-creations">
+                    <!-- Debug: {{ props.keyCreations.length }} items -->
                     <KeyContent
-                        media="/Assets/Videos/BIMain.mp4"
-                        title="Portal Data External Bank Indonesia"
-                        description="Central Bank of Indonesia's portal data site for external users to access monetary data."
-                        :openModal="openModal"
-                    />
-
-                    <KeyContent
-                        media="/Assets/Videos/ArchipelMain.mp4"
-                        title="Archipel Map"
-                        description="A modern, responsive portfolio website built with Laravel, Vue.js, and TypeScript. Features smooth animations, dynamic content, and a sleek design inspired by space aesthetics."
-                        :openModal="openModal"
-                    />
-
-                    <KeyContent
-                        media="/Assets/Images/Content/Task Management.png"
-                        title="Task Management App"
-                        description="Collaborative task management application with real-time updates, team collaboration features, and intuitive user interface."
+                        v-for="item in props.keyCreations"
+                        :key="item.id"
+                        :media="item.media"
+                        :title="item.title"
+                        :description="item.description"
                         :openModal="openModal"
                     />
                     <div class="content-footer">
@@ -258,7 +242,8 @@ onUnmounted(() => {
                     </div>
                 </div>
                 <div ref="otherProjectsRef" id="other-projects">
-                    <OtherProjectsGrid :projects="otherProjects" :openModal="openModal" />
+                    <!-- Debug: {{ props.otherProjects.length }} other projects -->
+                    <OtherProjectsGrid :projects="props.otherProjects" :openModal="openModal" />
                     <div class="content-footer" style="margin-top: 48px; padding-bottom: 0px;">
                         <p>Embarking on what made me, me..</p>
                         <h2 style="font-size: 26px;">Next Stop: Experiences</h2>

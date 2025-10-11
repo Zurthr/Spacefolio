@@ -269,7 +269,6 @@ const handleSectionClick = (section: 'key-creations' | 'other-projects' | 'exper
 }
 
 .featured-container:hover{
-    /* transform: scale(1.01); */
     transition: all 0.3s ease;
 }
 
