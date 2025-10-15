@@ -1,6 +1,6 @@
 {
-  "_WorkInProgressModal-CNeWNfjK.js": {
-    "file": "assets/WorkInProgressModal-CNeWNfjK.js",
+  "_WorkInProgressModal-D_rAI_Ym.js": {
+    "file": "assets/WorkInProgressModal-D_rAI_Ym.js",
     "name": "WorkInProgressModal",
     "imports": [
       "resources/js/app.ts",
@@ -19,7 +19,7 @@
     "name": "_plugin-vue_export-helper"
   },
   "resources/css/app.css": {
-    "file": "assets/app-DJhrzUGw.css",
+    "file": "assets/app-CLZ-VLol.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "names": [
@@ -27,7 +27,7 @@
     ]
   },
   "resources/js/app.ts": {
-    "file": "assets/app-BpQN6GCf.js",
+    "file": "assets/app-BEX2tgQv.js",
     "name": "app",
     "src": "resources/js/app.ts",
     "isEntry": true,
@@ -44,11 +44,11 @@
       "resources/js/pages/Navbar.vue"
     ],
     "css": [
-      "assets/app-DJhrzUGw.css"
+      "assets/app-CLZ-VLol.css"
     ]
   },
   "resources/js/pages/Landing.vue": {
-    "file": "assets/Landing-Bxbu6A-2.js",
+    "file": "assets/Landing-CamnZIxD.js",
     "name": "Landing",
     "src": "resources/js/pages/Landing.vue",
     "isDynamicEntry": true,
@@ -64,14 +64,14 @@
       "resources/js/pages/Landing/Content/Experience.vue",
       "resources/js/pages/Landing/Content/Contact.vue",
       "resources/js/pages/Landing/Content/Whatsapp.vue",
-      "_WorkInProgressModal-CNeWNfjK.js"
+      "_WorkInProgressModal-D_rAI_Ym.js"
     ],
     "css": [
-      "assets/app-DJhrzUGw.css"
+      "assets/app-CLZ-VLol.css"
     ]
   },
   "resources/js/pages/Landing/Content/Chat.vue": {
-    "file": "assets/Chat-De3Inr1Z.js",
+    "file": "assets/Chat-CXgLQaSE.js",
     "name": "Chat",
     "src": "resources/js/pages/Landing/Content/Chat.vue",
     "isDynamicEntry": true,
@@ -81,11 +81,11 @@
     ],
     "css": [
       "assets/Chat-BxskIdjk.css",
-      "assets/app-DJhrzUGw.css"
+      "assets/app-CLZ-VLol.css"
     ]
   },
   "resources/js/pages/Landing/Content/Contact.vue": {
-    "file": "assets/Contact-C40CtV6M.js",
+    "file": "assets/Contact-DQ4UhjKr.js",
     "name": "Contact",
     "src": "resources/js/pages/Landing/Content/Contact.vue",
     "isDynamicEntry": true,
@@ -95,12 +95,12 @@
       "__plugin-vue_export-helper-DlAUqK2U.js"
     ],
     "css": [
-      "assets/Contact-ANIDwy8l.css",
-      "assets/app-DJhrzUGw.css"
+      "assets/Contact-NQtthg8j.css",
+      "assets/app-CLZ-VLol.css"
     ]
   },
   "resources/js/pages/Landing/Content/Content.vue": {
-    "file": "assets/Content-BoYByLqW.js",
+    "file": "assets/Content-B1B3p8c9.js",
     "name": "Content",
     "src": "resources/js/pages/Landing/Content/Content.vue",
     "isDynamicEntry": true,
@@ -112,17 +112,17 @@
       "resources/js/pages/Landing/Content/Experience.vue",
       "resources/js/pages/Landing/Content/Contact.vue",
       "__plugin-vue_export-helper-DlAUqK2U.js",
-      "_WorkInProgressModal-CNeWNfjK.js",
+      "_WorkInProgressModal-D_rAI_Ym.js",
       "resources/js/pages/Landing/Content/Chat.vue",
       "resources/js/pages/Landing/Content/Whatsapp.vue"
     ],
     "css": [
-      "assets/Content-dBun5R5W.css",
-      "assets/app-DJhrzUGw.css"
+      "assets/Content-CyRvRQRO.css",
+      "assets/app-CLZ-VLol.css"
     ]
   },
   "resources/js/pages/Landing/Content/Experience.vue": {
-    "file": "assets/Experience-B0RBImPq.js",
+    "file": "assets/Experience-3skZEggr.js",
     "name": "Experience",
     "src": "resources/js/pages/Landing/Content/Experience.vue",
     "isDynamicEntry": true,
@@ -132,11 +132,11 @@
     ],
     "css": [
       "assets/Experience-CZedMvTO.css",
-      "assets/app-DJhrzUGw.css"
+      "assets/app-CLZ-VLol.css"
     ]
   },
   "resources/js/pages/Landing/Content/KeyContent.vue": {
-    "file": "assets/KeyContent-BKmhlvK6.js",
+    "file": "assets/KeyContent-DcCQ66s9.js",
     "name": "KeyContent",
     "src": "resources/js/pages/Landing/Content/KeyContent.vue",
     "isDynamicEntry": true,
@@ -145,12 +145,12 @@
       "__plugin-vue_export-helper-DlAUqK2U.js"
     ],
     "css": [
-      "assets/KeyContent-p5_Ts0bD.css",
-      "assets/app-DJhrzUGw.css"
+      "assets/KeyContent-I77oYls-.css",
+      "assets/app-CLZ-VLol.css"
     ]
   },
   "resources/js/pages/Landing/Content/ListOfContent.vue": {
-    "file": "assets/ListOfContent-CrtN9J6O.js",
+    "file": "assets/ListOfContent-BjGFpzVY.js",
     "name": "ListOfContent",
     "src": "resources/js/pages/Landing/Content/ListOfContent.vue",
     "isDynamicEntry": true,
@@ -161,11 +161,11 @@
     ],
     "css": [
       "assets/ListOfContent-0Tu1fbl1.css",
-      "assets/app-DJhrzUGw.css"
+      "assets/app-CLZ-VLol.css"
     ]
   },
   "resources/js/pages/Landing/Content/OtherProjectsGrid.vue": {
-    "file": "assets/OtherProjectsGrid-CoSipGNQ.js",
+    "file": "assets/OtherProjectsGrid-BSoXz0z_.js",
     "name": "OtherProjectsGrid",
     "src": "resources/js/pages/Landing/Content/OtherProjectsGrid.vue",
     "isDynamicEntry": true,
@@ -174,12 +174,12 @@
       "__plugin-vue_export-helper-DlAUqK2U.js"
     ],
     "css": [
-      "assets/OtherProjectsGrid-DF687XDm.css",
-      "assets/app-DJhrzUGw.css"
+      "assets/OtherProjectsGrid-Bs8qDSLt.css",
+      "assets/app-CLZ-VLol.css"
     ]
   },
   "resources/js/pages/Landing/Content/Whatsapp.vue": {
-    "file": "assets/Whatsapp-D3uGTJmE.js",
+    "file": "assets/Whatsapp-CJCUH5x0.js",
     "name": "Whatsapp",
     "src": "resources/js/pages/Landing/Content/Whatsapp.vue",
     "isDynamicEntry": true,
@@ -189,22 +189,22 @@
     ],
     "css": [
       "assets/Whatsapp-UOzYnqCT.css",
-      "assets/app-DJhrzUGw.css"
+      "assets/app-CLZ-VLol.css"
     ]
   },
   "resources/js/pages/Navbar.vue": {
-    "file": "assets/Navbar-kMLKf6ey.js",
+    "file": "assets/Navbar-CmpqA7xM.js",
     "name": "Navbar",
     "src": "resources/js/pages/Navbar.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.ts",
-      "_WorkInProgressModal-CNeWNfjK.js",
+      "_WorkInProgressModal-D_rAI_Ym.js",
       "__plugin-vue_export-helper-DlAUqK2U.js"
     ],
     "css": [
-      "assets/Navbar-B8DlAo6G.css",
-      "assets/app-DJhrzUGw.css"
+      "assets/Navbar-npRP3IYy.css",
+      "assets/app-CLZ-VLol.css"
     ]
   }
 }
