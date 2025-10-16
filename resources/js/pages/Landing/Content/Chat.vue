@@ -2,7 +2,7 @@
     <div class="chat">
         <h3>Hear that..?</h3>
         <div class="chat-container">
-            <div class="chat-item" :style="{
+            <div v-if="testimonials.length" class="chat-item" :style="{
                 opacity: chatItemVisible ? 1 : 0,
             }">
             <div class="personel-container">
