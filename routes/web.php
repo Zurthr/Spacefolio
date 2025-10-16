@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\RecommendationController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -25,3 +26,6 @@ Route::get('/', function () {
 Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio.index');
 Route::get('/api/portfolio/key-creations', [PortfolioController::class, 'keyCreations'])->name('portfolio.key-creations');
 Route::get('/api/portfolio/other-projects', [PortfolioController::class, 'otherProjects'])->name('portfolio.other-projects');
+
+// Recommendations API
+Route::get('/api/recommendations', [RecommendationController::class, 'index'])->name('recommendations.index');

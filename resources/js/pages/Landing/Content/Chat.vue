@@ -192,35 +192,27 @@ const chatItemVisible = ref(false)
 let intervalId: number | null = null
 let typingTimeoutId: number | null = null
 
-const testimonials = ref([
-    {
-        id: 1,
-        personImage: "/Assets/Chat/Ijapi.svg",
-        companyImage: "/Assets/Chat/tedxround.svg",
-        personName: "Izzafi A.",
-        title: "Data Eng.",
-        company: "TedxTelkom",
-        message: "..Versatile full-stack developer and adaptive leader who empowers his team and drives results. Highly self-driven.."
-    },
-    {
-        id: 2,
-        personImage: "/Assets/Chat/Zulfa.svg",
-        companyImage: "/Assets/Chat/biround.png",
-        personName: "Zulfa U.",
-        title: "Sr. UI/UX Dev.",
-        company: "Bank Indonesia",
-        message: "..Adaptable engineer, quickly learned BI’s practices, consistently shipped amazing results. Sociable and dependable.."
-    },
-    {
-        id: 3,
-        personImage: "/Assets/Chat/Sheva.svg",
-        companyImage: "/Assets/Chat/tedxround.svg",
-        personName: "Sheva Z.A",
-        title: "Content Lead",
-        company: "TedxNTU",
-        message: "..Empathetic leader, very communicative and empowers teams with diverse perspectives. Collaborative and growth-oriented.."
-    }
-])
+type RecommendationApi = {
+    id: number,
+    person_image: string,
+    company_image: string,
+    person_name: string,
+    title: string,
+    company: string,
+    message: string
+}
+
+type RecommendationView = {
+    id: number,
+    personImage: string,
+    companyImage: string,
+    personName: string,
+    title: string,
+    company: string,
+    message: string
+}
+
+const testimonials = ref<RecommendationView[]>([])
 
 const currentTestimonial = computed(() => testimonials.value[currentIndex.value])
 
@@ -258,11 +250,32 @@ const startAutoRotate = () => {
     intervalId = setInterval(nextTestimonial, 8000) // 8 sec
 }
 
-onMounted(() => {
+onMounted(async () => {
     setTimeout(() => {
         chatItemVisible.value = true
     }, 50)
-    
+
+    try {
+        const res = await fetch('/api/recommendations')
+        if (res.ok) {
+            const data: RecommendationApi[] = await res.json()
+            testimonials.value = data.map((d) => ({
+                id: d.id,
+                personImage: d.person_image,
+                companyImage: d.company_image,
+                personName: d.person_name,
+                title: d.title,
+                company: d.company,
+                message: d.message,
+            }))
+        }
+    } catch (e) {
+    }
+
+    if (testimonials.value.length === 0) {
+        return
+    }
+
     startAutoRotate()
     scheduleTypingIndicator()
 })

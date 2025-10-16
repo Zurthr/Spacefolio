@@ -27,6 +27,7 @@ const props = withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
+          <Head title="My New Title" />
     <Navbar />
     <div style="gap: 60px; display: flex; flex-direction: column">
         <Content 
