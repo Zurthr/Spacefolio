@@ -1,6 +1,6 @@
 {
-  "_WorkInProgressModal-Dfdf0H-O.js": {
-    "file": "assets/WorkInProgressModal-Dfdf0H-O.js",
+  "_WorkInProgressModal-BG6NdT7W.js": {
+    "file": "assets/WorkInProgressModal-BG6NdT7W.js",
     "name": "WorkInProgressModal",
     "imports": [
       "resources/js/app.ts",
@@ -27,7 +27,7 @@
     ]
   },
   "resources/js/app.ts": {
-    "file": "assets/app-HN20VyWE.js",
+    "file": "assets/app-BABmjGci.js",
     "name": "app",
     "src": "resources/js/app.ts",
     "isEntry": true,
@@ -48,7 +48,7 @@
     ]
   },
   "resources/js/pages/Landing.vue": {
-    "file": "assets/Landing-2ZICM5SY.js",
+    "file": "assets/Landing-BxBe_0rC.js",
     "name": "Landing",
     "src": "resources/js/pages/Landing.vue",
     "isDynamicEntry": true,
@@ -64,14 +64,14 @@
       "resources/js/pages/Landing/Content/Experience.vue",
       "resources/js/pages/Landing/Content/Contact.vue",
       "resources/js/pages/Landing/Content/Whatsapp.vue",
-      "_WorkInProgressModal-Dfdf0H-O.js"
+      "_WorkInProgressModal-BG6NdT7W.js"
     ],
     "css": [
       "assets/app-CLZ-VLol.css"
     ]
   },
   "resources/js/pages/Landing/Content/Chat.vue": {
-    "file": "assets/Chat-UDIpaAuJ.js",
+    "file": "assets/Chat-BTKGDrxC.js",
     "name": "Chat",
     "src": "resources/js/pages/Landing/Content/Chat.vue",
     "isDynamicEntry": true,
@@ -80,12 +80,12 @@
       "__plugin-vue_export-helper-DlAUqK2U.js"
     ],
     "css": [
-      "assets/Chat-BxskIdjk.css",
+      "assets/Chat-DXyZM7sx.css",
       "assets/app-CLZ-VLol.css"
     ]
   },
   "resources/js/pages/Landing/Content/Contact.vue": {
-    "file": "assets/Contact-4GHavBkp.js",
+    "file": "assets/Contact-B-0lG_Rq.js",
     "name": "Contact",
     "src": "resources/js/pages/Landing/Content/Contact.vue",
     "isDynamicEntry": true,
@@ -100,7 +100,7 @@
     ]
   },
   "resources/js/pages/Landing/Content/Content.vue": {
-    "file": "assets/Content-DJJVOIZS.js",
+    "file": "assets/Content-B9Fv1pBa.js",
     "name": "Content",
     "src": "resources/js/pages/Landing/Content/Content.vue",
     "isDynamicEntry": true,
@@ -112,7 +112,7 @@
       "resources/js/pages/Landing/Content/Experience.vue",
       "resources/js/pages/Landing/Content/Contact.vue",
       "__plugin-vue_export-helper-DlAUqK2U.js",
-      "_WorkInProgressModal-Dfdf0H-O.js",
+      "_WorkInProgressModal-BG6NdT7W.js",
       "resources/js/pages/Landing/Content/Chat.vue",
       "resources/js/pages/Landing/Content/Whatsapp.vue"
     ],
@@ -122,7 +122,7 @@
     ]
   },
   "resources/js/pages/Landing/Content/Experience.vue": {
-    "file": "assets/Experience-D5uJstq6.js",
+    "file": "assets/Experience-B_InM3zp.js",
     "name": "Experience",
     "src": "resources/js/pages/Landing/Content/Experience.vue",
     "isDynamicEntry": true,
@@ -136,7 +136,7 @@
     ]
   },
   "resources/js/pages/Landing/Content/KeyContent.vue": {
-    "file": "assets/KeyContent-WeHl-MSL.js",
+    "file": "assets/KeyContent-Bw9NzLvD.js",
     "name": "KeyContent",
     "src": "resources/js/pages/Landing/Content/KeyContent.vue",
     "isDynamicEntry": true,
@@ -150,7 +150,7 @@
     ]
   },
   "resources/js/pages/Landing/Content/ListOfContent.vue": {
-    "file": "assets/ListOfContent-CZxQsiAB.js",
+    "file": "assets/ListOfContent-C6ttp5Je.js",
     "name": "ListOfContent",
     "src": "resources/js/pages/Landing/Content/ListOfContent.vue",
     "isDynamicEntry": true,
@@ -165,7 +165,7 @@
     ]
   },
   "resources/js/pages/Landing/Content/OtherProjectsGrid.vue": {
-    "file": "assets/OtherProjectsGrid-BRcZ2-Vz.js",
+    "file": "assets/OtherProjectsGrid-DaAJootS.js",
     "name": "OtherProjectsGrid",
     "src": "resources/js/pages/Landing/Content/OtherProjectsGrid.vue",
     "isDynamicEntry": true,
@@ -179,7 +179,7 @@
     ]
   },
   "resources/js/pages/Landing/Content/Whatsapp.vue": {
-    "file": "assets/Whatsapp-CxYUBFss.js",
+    "file": "assets/Whatsapp-DAjx9wjT.js",
     "name": "Whatsapp",
     "src": "resources/js/pages/Landing/Content/Whatsapp.vue",
     "isDynamicEntry": true,
@@ -193,13 +193,13 @@
     ]
   },
   "resources/js/pages/Navbar.vue": {
-    "file": "assets/Navbar-BFyHGu6B.js",
+    "file": "assets/Navbar-B4-g9WD4.js",
     "name": "Navbar",
     "src": "resources/js/pages/Navbar.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.ts",
-      "_WorkInProgressModal-Dfdf0H-O.js",
+      "_WorkInProgressModal-BG6NdT7W.js",
       "__plugin-vue_export-helper-DlAUqK2U.js"
     ],
     "css": [
